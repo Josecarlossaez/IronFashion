@@ -26,8 +26,12 @@
       <nav>
          <a href="/">Home</a>
          {{#if isUserActive}}
-         <a href="/profile">Ver Perfil</a>
+         <a href="/profile">Perfil</a>
          <a href="/auth/logout">Cerrar Sesion</a>
+         <br>
+         <br>
+         <a href="/product">Lista de productos</a>
+         <a href="/product/create">Crear productos</a>
          {{else}}
 
          <a href="/auth/signup">Registarse</a>
