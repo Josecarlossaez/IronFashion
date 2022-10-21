@@ -24,7 +24,7 @@ router.use("/colection", colectionRoutes)
 
 // RUTAS DE PRODUCT
 
-const productRoutes = require("./prouduct.routes.js")
+const productRoutes = require("./product.routes.js")
 router.use("/product", productRoutes)
 
 // RUTAS DE PROFILE
