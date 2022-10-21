@@ -25,11 +25,15 @@
 
       <nav>
          <a href="/">Home</a>
+         {{#if isUserActive}}
          <a href="/profile">Ver Perfil</a>
          <a href="/auth/logout">Cerrar Sesion</a>
-         <br>
+         {{else}}
+
          <a href="/auth/signup">Registarse</a>
          <a href="/auth/login">Acceder</a>
+         {{/if}}
+
       </nav>
       <div class="d-flex flex-column align-items-center">
       {{{body}}}

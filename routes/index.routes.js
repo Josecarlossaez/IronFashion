@@ -30,7 +30,7 @@ router.use("/product", productRoutes)
 // RUTAS DE PROFILE
 
 const profileRoutes = require("./profile.routes")
-router.use("/profile", productRoutes)
+router.use("/profile", profileRoutes)
 
 
 
