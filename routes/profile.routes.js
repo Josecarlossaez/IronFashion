@@ -4,6 +4,8 @@ const User = require("../models/User.model")
 
 const {isLoggedIn, isAdmin} = require("../middlewares/auth.middlewares.js")
 
+
+
 // GET /"profile"/ el usuario puede ver su perfil
 router.get("/", isLoggedIn, (req, res, next) => {
 
@@ -20,9 +22,11 @@ router.get("/", isLoggedIn, (req, res, next) => {
   })
 })
 
-router.get("/admin-profile", isAdmin, (req, res, next) => {
+router.get("/admin-profile",isAdmin, (req, res, next) => {
+
   res.render("profile/admin-profile.hbs")
 })
+
 
 
 module.exports = router;
