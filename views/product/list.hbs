@@ -3,5 +3,12 @@
   <p>...</p>
 
   {{#each listProduct}}
-  <p>{{name}}</p>
+    <h3>
+      <a href="/product/{{_id}}/details">{{name}}</a>
+    </h3>
+    {{#if isAdmin}}
+      <p>{{cost}}</p>
+    {{/if}}
+  {{/each}}
+
 </div>

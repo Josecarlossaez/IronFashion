@@ -1,0 +1,36 @@
+<div>
+    <h3>Añade una colección</h3>
+      <form action="/colection/create" method="POST">
+
+
+    <label for="title">Titulo de la Colección:</label>
+    <input type="text" name="title">
+    <br>
+    <label for="description">Descripción:</label>
+    <input type="text" name="description">
+    <br>
+    <label for="productos">Autor:</label>
+   
+
+    <select name="productos" multiple="true">
+    
+        <option value="">Elija un producto</option>
+
+        {{#each productList}}
+            <option value="{{this._id}}">{{this.name}}</option>
+        {{/each}}
+
+    </select>
+    <button type="submit">Añadir Producto</button>
+    {{!-- <ol>
+ {{#each productList}}
+ <li>{{this.name}}</li>
+   {{/each}}
+    </ol> --}}
+
+    <br>
+    <button type="submit">Añadir Colección</button>
+    {{!-- cuando el boton está dentro de un form, se comporta siempre como submit de forma predeterminada --}}
+
+  </form>
+</div>
