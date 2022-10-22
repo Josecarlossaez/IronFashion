@@ -1,0 +1,16 @@
+<div>
+  <h3>Crear un Blog </h3>
+  <form action="/blog/{{blogDetails._id}}/edit-form" method="POST">
+    <label for="title">Título del Blog: </label>
+    <input type="text" name="title" value="{{blogDetails.title}}" />
+    <br />
+    <h1>Aquí la imagen</h1>
+    <br />
+    <label for="description">Descripción: </label>
+    <input type="text" name="description" value="{{blogDetails.description}}" />
+    <br />
+    <button>Editar Blog</button>
+
+  </form>
+  
+</div>
