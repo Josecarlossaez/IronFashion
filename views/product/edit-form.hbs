@@ -1,0 +1,19 @@
+<div>
+    <h3>Editar producto</h3>
+      <form action="/product/{{productDetails._id}}/edit-form" method="POST">
+<label for="name">Nombre del producto: </label>
+<input type="text" name="name" value="{{productDetails.name}}">
+<br>
+<label for="description">Descripción: </label>
+<input type="text" name="description" value="{{productDetails.description}}">
+<br>
+<label for="type">Tipo: </label>
+<input type="text" name="type" value="{{productDetails.type}}">
+<br>
+<label for="cost">Precio: </label><span>euros</span>
+<input type="number" name="cost" value="{{productDetails.cost}}" >
+<br>
+<button>Editar producto</button>
+
+    </form>
+</div>

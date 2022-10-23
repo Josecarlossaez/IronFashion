@@ -9,6 +9,13 @@
     {{#if isAdmin}}
       <p>{{cost}}</p>
     {{/if}}
+        <a href="/product/{{_id}}/edit-form">
+<button>Editar Producto</button>
+    </a>
+      <br>
+<form action="/product/{{_id}}/delete" method="POST">
+<button>Borrar Producto</button>
+</form>
   {{/each}}
 
 </div>

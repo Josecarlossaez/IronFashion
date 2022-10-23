@@ -1,0 +1,36 @@
+<div>
+    <h3>Editar Colección</h3>
+      <form action="/colection/{{colectionDetails._id}}edit-form" method="POST">
+
+
+    <label for="title">Titulo de la Colección:</label>
+    <input type="text" name="title" value="{{colectionDetails.title}}">
+    <br>
+    <label for="description">Descripción:</label>
+    <input type="text" name="description" value="{{colectionDetails.description}}">
+    <br>
+    <label for="productos">Autor:</label>
+   
+
+    <select name="productos" multiple="true">
+    
+        <option value="{{colectionDetails.productos}}">Elija un producto</option>
+
+        {{#each colectionDetails.productos}}
+            <option value="{{this._id}}">{{this.name}}</option>
+        {{/each}}
+
+    </select>
+    <button type="submit">Editar Producto</button>
+    {{!-- <ol>
+ {{#each productList}}
+ <li>{{this.name}}</li>
+   {{/each}}
+    </ol> --}}
+
+    <br>
+    <button type="submit">Editar Colección</button>
+    {{!-- cuando el boton está dentro de un form, se comporta siempre como submit de forma predeterminada --}}
+
+  </form>
+</div>

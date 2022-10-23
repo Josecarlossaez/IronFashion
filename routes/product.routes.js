@@ -14,7 +14,7 @@ router.post("/create", async(req, res, next) => {
    
     const productToAdd ={name,cost,description,type,img}
     await Product.create(productToAdd);
-    res.redirect("/list")
+    res.redirect("/product/list")
 
   }catch (err){
     next(err)
@@ -51,6 +51,45 @@ router.get("/:productId/details",  (req, res, next) => {
    })
    
 
+});
+
+//GET ("/product/:productId/edit-form")
+router.get("/:productId/edit-form", (req,res,next) => {
+const{productId} = req.params
+Product.findById(productId)
+.then((product) => {
+res.render("product/edit-form.hbs",{
+  productDetails : product
+})
+})
+.catch ((err) => {
+  next(err)
+})
+});
+
+//POST ("/product/:productId/edit-form")
+router.post("/:productId/edit-form", (req,res,next) => {
+  const{productId} = req.params
+  const{name,description,cost,type,img} = req.body
+  const editProduct ={name, description, cost, type, img}
+  Product.findByIdAndUpdate(productId , editProduct)
+  .then(() => {
+    res.redirect("/product/list")
+  })
+.catch((err) => {
+  next(err)
+})
+});
+
+//POST ("/product/:productId/delete")
+router.post("/:productId/delete", (req, res, next) => {
+  Product.findByIdAndDelete(req.params.productId)
+  .then(() => {
+    res.redirect("/product/list")
+  })
+  .catch((err) => {
+    next(err)
+  })
 })
 
 module.exports = router;
