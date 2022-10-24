@@ -1,41 +1,41 @@
 <div>
   <h3>Crear un producto</h3>
-  <form action="/product/create" method="POST">
-<label for="productType">Nombre del producto: </label>
-<input type="text" name="productType">
-<br>
-<label for="description">Descripción: </label>
-<input type="text" name="description">
-<br>
-<label for="temporada">Temporada: </label>
-<input type="text" name="temporada">
-<br>
-<label for="cost">Precio: </label><span>€</span>
-<input type="number" name="cost">
-<br>
-<label for="color">Color: </label>
-<input type="text" name="color">
-<br>
- <label for="size">Talla: </label>
-<select name="size" multiple="true">
+  <form action="/product/create" method="POST" enctype="multipart/form-data">
+    <label for="productType">Nombre del producto: </label>
+    <input type="text" name="productType" />
+    <br />
+    <label for="description">Descripción: </label>
+    <input type="text" name="description" />
+    <br />
+    <label for="temporada">Temporada: </label>
+    <input type="text" name="temporada" />
+    <br />
+    <label for="cost">Precio: </label><span>€</span>
+    <input type="number" name="cost" />
+    <br />
+    <label for="color">Color: </label>
+    <input type="text" name="color" />
+    <br />
+    <label for="size">Talla: </label>
+    <select name="size" multiple="true">
 
-  <option value="XS">XS</option>
-  <option value="S">S</option>
-  <option value="M">M</option>
-  <option value="L">L</option>
-  <option value="XL">XL</option>
-  <option value="XXL">XXL</option>
+      <option value="XS">XS</option>
+      <option value="S">S</option>
+      <option value="M">M</option>
+      <option value="L">L</option>
+      <option value="XL">XL</option>
+      <option value="XXL">XXL</option>
 
+    </select>
 
-</select>
+    <br />
 
-<br>
+    <div>
+      <label for="img">Imagen del producto</label>
+      <input type="file" name="img" />
+    </div>
+    <br />
+    <button class="btn btn-primary">Añadir producto</button>
 
-<div>
-  <h1>Aquí la imagen</h1>
-</div>
-<br>
-<button>Añadir producto</button>
-
-    </form>
+  </form>
 </div>

@@ -124,8 +124,8 @@ router.post("/login", async (req, res, next) => {
     req.session.activeUser = foundUser; // ESTA ES LA LÍNEA QUE CREA LA SESIÓN / COOKIE
 
     // método para asegurar que la sesión se ha creado correctamente antes de continuar
-    req.session.save(() => {
-      // 4. Redireccionar a una página privada
+    req.session.save(() => { // 4. Redireccionar a una página privada
+      
      if(foundUser.role === "admin"){
       res.redirect("/profile/admin-profile");
      }else{

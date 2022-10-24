@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Product = require("../models/Product.model.js")
+const uploader = require("../middlewares/cloudinary.js")
 
 //GET  ("/product/create") ruta para visualizar la página para crear un producto
 router.get("/create", (req, res, next) => {
@@ -8,11 +9,12 @@ router.get("/create", (req, res, next) => {
 });
 
 // POST ("/product/create") ruta para crear un producto
-router.post("/create", async(req, res, next) => {
-   const{productType, cost, description, temporada,size,img, color} = req.body
+router.post("/create",uploader.single("img"), async(req, res, next) => {
+   const{productType, cost, description, temporada, size, color} = req.body
+   
   try{
    
-    const productToAdd ={productType,cost,description,temporada,size,img,color}
+    const productToAdd ={productType,cost,description,temporada,size,img: req.file.path,color}
     await Product.create(productToAdd);
     res.redirect("/product/list")
 

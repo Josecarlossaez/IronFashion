@@ -1,0 +1,18 @@
+<div>
+  <h3>Detalles de la colección</h3>
+
+  <p>Coleccion: {{colectionDetails.title}}</p>
+
+
+  <div>
+    <h3>Detalles del producto</h3>
+      {{#each allProducts}}
+    
+    <a href="/product/{{_id}}/details"><h4>Tipo: {{productType}}</h4></a>  
+    <div>
+        <h3>Aquí la imagen</h3>
+    </div>
+    {{/each}}
+ 
+</div>
+</div>

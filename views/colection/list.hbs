@@ -1,17 +1,19 @@
 <div>
-    {{#each colectionList}}
-    <h3>{{title}}</h3>
-    <p>{{description}}</p>
-        {{#each productos}}
-        <p>{{this.name}}</p>
-        {{/each}}
-            <a href="/colection/{{_id}}/edit-form">
-<button>Editar Colección</button>
-    </a>
-      <br>
-<form action="/colection/{{_id}}/delete" method="POST">
-<button>Borrar Colección</button>
-</form>
-    {{/each}}
+  {{#each colectionList}}
     
+      <a href="/colection/{{_id}}/details"><h3>{{title}}</h3></a>
+
+    <p>{{description}}</p>
+    {{#each productos}}
+      <p>{{this.productType}}</p>
+    {{/each}}
+    <a href="/colection/{{_id}}/edit-form">
+      <button>Editar Colección</button>
+    </a>
+    <br />
+    <form action="/colection/{{_id}}/delete" method="POST">
+      <button>Borrar Colección</button>
+    </form>
+  {{/each}}
+
 </div>

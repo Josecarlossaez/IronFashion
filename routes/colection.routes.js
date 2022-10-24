@@ -87,5 +87,25 @@ router.post("/:colectionId/delete", (req, res, next) => {
     })
 })
 
+// GET ("/colection/:colectionId/details")
+router.get("/:colectionId/details",  async (req, res, next) => {
+    const {colectionId} = req.params;
+
+
+    try {
+        const colectionDetails = await Collection.findById(colectionId).populate("productos")
+        const allProducts = await Product.find()
+        console.log(allProducts)
+        res.render("colection/details.hbs", {
+        colectionDetails,
+        allProducts
+    })
+        
+    } catch (error) {
+        next(error)
+    }  
+   
+  });
+
 
 module.exports = router;
