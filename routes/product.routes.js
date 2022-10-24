@@ -42,6 +42,7 @@ router.get("/:productId/details",  (req, res, next) => {
 
    Product.findById(productId)
    .then((response) => {
+    console.log(response)
      res.render("product/details.hbs", {
       productDetails:response
     })

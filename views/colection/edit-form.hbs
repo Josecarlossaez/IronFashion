@@ -1,6 +1,6 @@
 <div>
     <h3>Editar Colección</h3>
-      <form action="/colection/{{colectionDetails._id}}edit-form" method="POST">
+      <form action="/colection/{{colectionDetails._id}}/edit-form" method="POST">
 
 
     <label for="title">Titulo de la Colección:</label>
@@ -10,9 +10,12 @@
     <input type="text" name="description" value="{{colectionDetails.description}}">
     <br>
     <label for="productos">Autor:</label>
-   
+    <br>
+      {{#each colectionDetails.productos}}
+    <p>Productos: {{name}}</p>
+    {{/each}}
 
-    <select name="productos" multiple="true">
+    {{!-- <select name="productos" multiple="true">
     
         <option value="{{colectionDetails.productos}}">Elija un producto</option>
 
@@ -20,8 +23,19 @@
             <option value="{{this._id}}">{{this.name}}</option>
         {{/each}}
 
+    </select> --}}
+
+    <select name="productos" multiple="true">
+    
+        <option value="{{allProducts.name}}">Elija un producto</option>
+
+        {{#each allProducts}}
+            <option value="{{this._id}}">{{this.name}}</option>
+        {{/each}}
+
     </select>
-    <button type="submit">Editar Producto</button>
+    
+    
     {{!-- <ol>
  {{#each productList}}
  <li>{{this.name}}</li>

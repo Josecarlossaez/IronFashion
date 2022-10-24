@@ -43,19 +43,24 @@ router.get("/list", (req, res, next) => {
 })
 
 //GET ("/colection/:colectionId/edit-form")
-router.get("/:colectionId/edit-form", (req, res, next) => {
+router.get("/:colectionId/edit-form", async (req, res, next) => {
     const{colectionId} = req.params
-   
-    Collection.findById(colectionId)
-    Product.find()
-    .then((colection) => {
-   res.render("colection/edit-form.hbs", {
-    colectionDetails : colection
-   })
-    })
-    .catch((err) => {
-        next(err)
-    })
+
+    try {
+        const colectionDetails = await Collection.findById(colectionId).populate("productos")
+        const allProducts = await Product.find()
+        console.log("detalles de la coleccion", colectionDetails)
+        console.log("detalles de los productos", allProducts)
+        res.render("colection/edit-form.hbs", {
+            colectionDetails,
+            allProducts
+        })
+        
+    } catch (error) {
+        next (error)
+    }
+    
+
 });
 
 //POST ("/colection/:colectionId/edit-form")
@@ -64,7 +69,7 @@ router.post("/:colectionId/edit-form", (req, res, next) => {
     const{title, description, productos} =req.body
     const colectionUpdate={title, description, productos}
     Collection.findByIdAndUpdate(colectionId , colectionUpdate)
-    .then((colection) => {
+    .then(() => {
 res.redirect("/colection/list")
     })
     .catch((err) => {
