@@ -2,8 +2,12 @@ const express = require('express');
 const router = express.Router();
 const Collection = require("../models/Collection.model.js")
 const Product = require("../models/Product.model.js")
+const uploader = require("../middlewares/cloudinary.js")
+
+const {isLoggedIn, isAdmin} = require("../middlewares/auth.middlewares.js")
+
 // GET ("/colection/create")
-router.get("/create", (req, res, next) => {
+router.get("/create",(req, res, next) => {
     Product.find()
     .then((productos) => {
         res.render("colection/create.hbs",{
@@ -15,9 +19,9 @@ router.get("/create", (req, res, next) => {
 })
 
 //POST ("/colection/create")
-router.post("/create", (req,res,next) =>{
+router.post("/create",uploader.single("img") ,(req,res,next) =>{
     const{title, description, productos} = req.body
-    const colectiontoAdd ={title,description,productos}
+    const colectiontoAdd ={title,description,img: req.file.path , productos}
     Collection.create(colectiontoAdd)
     .then((colection) => {
         res.redirect("/colection/list")

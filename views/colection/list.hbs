@@ -6,6 +6,9 @@
     <p>{{description}}</p>
     {{#each productos}}
       <p>{{this.productType}}</p>
+      <div>
+        <img src="{{img}}" alt="imagen de colección">
+      </div>
     {{/each}}
     <a href="/colection/{{_id}}/edit-form">
       <button>Editar Colección</button>
