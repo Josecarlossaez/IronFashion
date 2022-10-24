@@ -1,27 +1,22 @@
 <div>
   {{#each colectionList}}
-    
-      <a href="/colection/{{_id}}/details"><h3>{{title}}</h3></a>
 
+    <a href="/colection/{{_id}}/details"><h3>{{title}}</h3></a>
     <p>{{description}}</p>
-    {{#each productos}}
-      <p>{{this.productType}}</p>
-      <div>
-        <img src="{{img}}" alt="imagen de colección">
-      </div>
-    {{/each}}
-       {{!-- {{#if userRole.role === "admin"}} --}}
+    <div>
+      <img src="{{img}}" alt="imagen de colección" />
+    </div>
+
+    {{#if adminIsActive}}
 
     <a href="/colection/{{_id}}/edit-form">
-  
       <button>Editar Colección</button>
     </a>
-    <br />
+    <br/>
     <form action="/colection/{{_id}}/delete" method="POST">
       <button>Borrar Colección</button>
-     
     </form>
-     {{!-- {{/if}} --}}
+    {{/if}}
   {{/each}}
 
 </div>

@@ -35,36 +35,25 @@ router.post("/create",uploader.single("img") ,(req,res,next) =>{
 // VISUALIZAR LISTA DE COLECCIONES
 // GET ("/colection/list")
 router.get("/list", async (req, res, next) => {
-    const {userId} = req.params
-try {
-    const colectionList = await Collection.find().populate("productos")
-    const userRole = await User.findById(userId)
-    console.log("datos de userRole", userId);
-    if(userRole.role === "admin"){
-         res.render("colection/list.hbs",{
-        colectionList,
-      }) 
-    } else{
-        res.render("colection/user-list", {
-            colectionList
-        })
-    }
-   
-
     
+try {
+    const colectionList = await Collection.find().populate("productos")  
+    const foundUser = await User.find()
+    console.log(foundUser)
+    //req.session.activeAdmin = foundUser.role //!.?????????
+    let adminIsActive = false
+    if (foundUser.role === "admin"){
+        adminIsActive = true
+    } 
+    console.log("El admin esta activo o false?", adminIsActive)
+    res.render("colection/list.hbs",{
+        colectionList,
+        adminIsActive
+      })     
 } catch (error) {
     next(error)
 }
-//    Collection.find()
-//    .populate("productos")
-//    .then((colection) => {
-//     res.render("colection/list.hbs",{
-//         colectionList : colection
-//     })
 
-//    }).catch((err) => {
-//     next(err)
-//    })
 })
 
 //GET ("/colection/:colectionId/edit-form")

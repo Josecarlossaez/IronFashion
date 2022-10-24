@@ -26,12 +26,20 @@ app.locals.appTitle = `${capitalize(projectName)} created with IronLauncher`;
 
 app.use((req, res, next) => {
   if(req.session.activeUser === undefined) {
+    console.log("quiero saber que hay dentro del req.session.activeUser:", req.session.activeUser)
     res.locals.isUserActive = false
   } else{
     res.locals.isUserActive = true
   }
   next()
 })
+// app.use((req, res, next) => { //!No se como hacer esta variable
+//   if(req.session.activeAdmin === "admin"){
+//     res.locals.isAdminActive = false
+//   }else {
+//     res.locals.isAdminActive = true
+//   }
+// })
 
 // 👇 Start handling routes here
 const indexRoutes = require("./routes/index.routes");
