@@ -8,7 +8,7 @@ const isLoggedIn = (req, res, next) => {
 }
 
 const isAdmin = (req, res, next) => {
-  if(req.session.activeUser === undefined && req.session.activeUser.role !== "admin") {
+  if(req.session.activeUser === undefined || req.session.activeUser.role !== "admin") {
     res.render("/auth/login")
   }else {
     next()

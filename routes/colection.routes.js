@@ -3,11 +3,12 @@ const router = express.Router();
 const Collection = require("../models/Collection.model.js")
 const Product = require("../models/Product.model.js")
 const uploader = require("../middlewares/cloudinary.js")
-
+const User = require("../models/User.model.js")
 const {isLoggedIn, isAdmin} = require("../middlewares/auth.middlewares.js")
 
+
 // GET ("/colection/create")
-router.get("/create",(req, res, next) => {
+router.get("/create",isAdmin, (req, res, next) => {
     Product.find()
     .then((productos) => {
         res.render("colection/create.hbs",{
@@ -33,21 +34,41 @@ router.post("/create",uploader.single("img") ,(req,res,next) =>{
 
 // VISUALIZAR LISTA DE COLECCIONES
 // GET ("/colection/list")
-router.get("/list", (req, res, next) => {
-   Collection.find()
-   .populate("productos")
-   .then((colection) => {
-    res.render("colection/list.hbs",{
-        colectionList : colection
-    })
+router.get("/list", async (req, res, next) => {
+    const {userId} = req.params
+try {
+    const colectionList = await Collection.find().populate("productos")
+    const userRole = await User.findById(userId)
+    console.log("datos de userRole", userId);
+    if(userRole.role === "admin"){
+         res.render("colection/list.hbs",{
+        colectionList,
+      }) 
+    } else{
+        res.render("colection/user-list", {
+            colectionList
+        })
+    }
+   
 
-   }).catch((err) => {
-    next(err)
-   })
+    
+} catch (error) {
+    next(error)
+}
+//    Collection.find()
+//    .populate("productos")
+//    .then((colection) => {
+//     res.render("colection/list.hbs",{
+//         colectionList : colection
+//     })
+
+//    }).catch((err) => {
+//     next(err)
+//    })
 })
 
 //GET ("/colection/:colectionId/edit-form")
-router.get("/:colectionId/edit-form", async (req, res, next) => {
+router.get("/:colectionId/edit-form", isAdmin, async (req, res, next) => {
     const{colectionId} = req.params
 
     try {
