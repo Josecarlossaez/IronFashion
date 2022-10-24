@@ -9,10 +9,10 @@ router.get("/create", (req, res, next) => {
 
 // POST ("/product/create") ruta para crear un producto
 router.post("/create", async(req, res, next) => {
-   const{name, cost, description, type,img} = req.body
+   const{productType, cost, description, temporada,size,img, color} = req.body
   try{
    
-    const productToAdd ={name,cost,description,type,img}
+    const productToAdd ={productType,cost,description,temporada,size,img,color}
     await Product.create(productToAdd);
     res.redirect("/product/list")
 
@@ -71,8 +71,8 @@ res.render("product/edit-form.hbs",{
 //POST ("/product/:productId/edit-form")
 router.post("/:productId/edit-form", (req,res,next) => {
   const{productId} = req.params
-  const{name,description,cost,type,img} = req.body
-  const editProduct ={name, description, cost, type, img}
+  const{productType,cost,description,temporada,size,img,color} = req.body
+  const editProduct ={productType,cost,description,temporada,size,img,color}
   Product.findByIdAndUpdate(productId , editProduct)
   .then(() => {
     res.redirect("/product/list")

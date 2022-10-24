@@ -12,7 +12,7 @@
     <label for="productos">Autor:</label>
     <br>
       {{#each colectionDetails.productos}}
-    <p>Productos: {{name}}</p>
+    <p>Productos: {{productType}}</p>
     {{/each}}
 
     {{!-- <select name="productos" multiple="true">
@@ -27,10 +27,10 @@
 
     <select name="productos" multiple="true">
     
-        <option value="{{allProducts.name}}">Elija un producto</option>
+        <option value="{{allProducts.productType}}">Elija un producto</option>
 
         {{#each allProducts}}
-            <option value="{{this._id}}">{{this.name}}</option>
+            <option value="{{this._id}}">{{this.productType}}</option>
         {{/each}}
 
     </select>
