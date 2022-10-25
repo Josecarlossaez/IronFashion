@@ -38,17 +38,10 @@ router.get("/list", async (req, res, next) => {
     
 try {
     const colectionList = await Collection.find().populate("productos")  
-    const foundUser = await User.find()
-    console.log(foundUser)
-    //req.session.activeAdmin = foundUser.role //!.?????????
-    let adminIsActive = false
-    if (foundUser.role === "admin"){
-        adminIsActive = true
-    } 
-    console.log("El admin esta activo o false?", adminIsActive)
+
     res.render("colection/list.hbs",{
-        colectionList,
-        adminIsActive
+        colectionList
+       
       })     
 } catch (error) {
     next(error)
@@ -78,7 +71,7 @@ router.get("/:colectionId/edit-form", isAdmin, async (req, res, next) => {
 });
 
 //POST ("/colection/:colectionId/edit-form")
-router.post("/:colectionId/edit-form", (req, res, next) => {
+router.post("/:colectionId/edit-form",isAdmin, (req, res, next) => {
     const{colectionId} = req.params
     const{title, description, productos} =req.body
     const colectionUpdate={title, description, productos}
@@ -91,7 +84,7 @@ res.redirect("/colection/list")
     })
 });
 //POST ("/colection/:colectionId/delete")
-router.post("/:colectionId/delete", (req, res, next) => {
+router.post("/:colectionId/delete",isAdmin,(req, res, next) => {
     Collection.findByIdAndDelete(req.params.colectionId)
     .then(() => {
        res.redirect("/colection/list")
@@ -102,7 +95,7 @@ router.post("/:colectionId/delete", (req, res, next) => {
 })
 
 // GET ("/colection/:colectionId/details")
-router.get("/:colectionId/details",  async (req, res, next) => {
+router.get("/:colectionId/details",isLoggedIn, async (req, res, next) => {
     const {colectionId} = req.params;
 
 

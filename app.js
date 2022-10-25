@@ -33,13 +33,31 @@ app.use((req, res, next) => {
   }
   next()
 })
-// app.use((req, res, next) => { //!No se como hacer esta variable
-//   if(req.session.activeAdmin === "admin"){
-//     res.locals.isAdminActive = false
-//   }else {
+// app.use((req, res, next) => { 
+//   if(req.session.activeUser.role === "admin"){
 //     res.locals.isAdminActive = true
+//   }else {
+//     res.locals.isAdminActive = false
 //   }
 // })
+// app.use((req, res, next) => { 
+//   if(req.session.activeUser === undefined || req.session.activeUser.role ==="user"){
+//     res.locals.isAdminActive = false
+//   }else {
+//     console.log("user is admin")
+//     res.locals.isAdminActive = true
+//   }
+//   next()
+// })
+app.use((req, res, next) => { 
+  if(req.session.activeUser !== undefined && req.session.activeUser.role ==="admin"){
+    res.locals.isAdminActive = true
+  }else {
+    
+    res.locals.isAdminActive = false
+  }
+  next()
+})
 
 // 👇 Start handling routes here
 const indexRoutes = require("./routes/index.routes");

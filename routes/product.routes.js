@@ -1,15 +1,16 @@
 const express = require('express');
 const router = express.Router();
 const Product = require("../models/Product.model.js")
-const uploader = require("../middlewares/cloudinary.js")
+const uploader = require("../middlewares/cloudinary.js");
+const { isAdmin, isLoggedIn } = require('../middlewares/auth.middlewares.js');
 
 //GET  ("/product/create") ruta para visualizar la página para crear un producto
-router.get("/create", (req, res, next) => {
+router.get("/create", isAdmin,(req, res, next) => {
   res.render("product/create.hbs")
 });
 
 // POST ("/product/create") ruta para crear un producto
-router.post("/create",uploader.single("img"), async(req, res, next) => {
+router.post("/create",uploader.single("img"),  isAdmin, async(req, res, next) => {
    const{productType, cost, description, temporada, size, color} = req.body
    
   try{
@@ -24,7 +25,7 @@ router.post("/create",uploader.single("img"), async(req, res, next) => {
 })
 
 //GET ("/produtct/list")ruta donde el admin puede ver todos los productos
-router.get("/list", (req, res, next) => {
+router.get("/list", isLoggedIn, (req, res, next) => {
 
   Product.find()
   .then((listProduct) => {
@@ -39,7 +40,7 @@ router.get("/list", (req, res, next) => {
 })
 
 // GET ("/product/:productId/details")
-router.get("/:productId/details",  (req, res, next) => {
+router.get("/:productId/details", isLoggedIn, (req, res, next) => {
   const {productId} = req.params;
 
    Product.findById(productId)
@@ -57,7 +58,7 @@ router.get("/:productId/details",  (req, res, next) => {
 });
 
 //GET ("/product/:productId/edit-form")
-router.get("/:productId/edit-form", (req,res,next) => {
+router.get("/:productId/edit-form", isAdmin, (req,res,next) => {
 const{productId} = req.params
 Product.findById(productId)
 .then((product) => {
@@ -71,7 +72,7 @@ res.render("product/edit-form.hbs",{
 });
 
 //POST ("/product/:productId/edit-form")
-router.post("/:productId/edit-form", (req,res,next) => {
+router.post("/:productId/edit-form",  isAdmin, (req,res,next) => {
   const{productId} = req.params
   const{productType,cost,description,temporada,size,img,color} = req.body
   const editProduct ={productType,cost,description,temporada,size,img,color}
@@ -85,7 +86,7 @@ router.post("/:productId/edit-form", (req,res,next) => {
 });
 
 //POST ("/product/:productId/delete")
-router.post("/:productId/delete", (req, res, next) => {
+router.post("/:productId/delete",  isAdmin, (req, res, next) => {
   Product.findByIdAndDelete(req.params.productId)
   .then(() => {
     res.redirect("/product/list")

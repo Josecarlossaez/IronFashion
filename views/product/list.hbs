@@ -6,16 +6,18 @@
     <h3>
       <a href="/product/{{_id}}/details">{{productType}}</a>
     </h3>
-    {{#if isAdmin}}
-      <p>{{cost}}</p>
-    {{/if}}
+  
+      <p>Precio: {{cost}}€</p>
+      {{#if ../isAdminActive}}
         <a href="/product/{{_id}}/edit-form">
-<button>Editar Producto</button>
-    </a>
-      <br>
-<form action="/product/{{_id}}/delete" method="POST">
-<button>Borrar Producto</button>
-</form>
+      
+           <button>Editar Producto</button>
+        </a>
+        <br>
+        <form action="/product/{{_id}}/delete" method="POST">
+            <button>Borrar Producto</button>
+        </form>
+       {{/if}}
   {{/each}}
 
 </div>

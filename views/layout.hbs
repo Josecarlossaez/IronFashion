@@ -29,23 +29,25 @@
          <a href="/profile">Perfil</a>
          <a href="/auth/logout">Cerrar Sesion</a>
          <br>
-           <a href="/product/create">Crear Producto</a>
-  <a href="/product/list">Lista de productos</a>
-  <br>
-  <a href="/colection/create">Crear Colección</a>
-   <a href="/colection/list">Lista de Colecciones</a>
-   <br>
-   <a href="/blog/create">Crear Blog</a>
-   <a href="/blog/list">Lista de Blogs</a>
-  
+         <a href="/product/list">Productos</a>
+         <a href="/blog/list"> Blogs</a>
+         <a href="/colection/list">Colecciones</a>
          <br>
+         {{#if isAdminActive}}
+           <a href="/product/create">Crear Producto</a>
+           <a href="/colection/create">Crear Colección</a>
+           <a href="/blog/create">Crear Blog</a>
+           {{/if}}
         
+           
+         
          {{else}}
 
          <a href="/auth/signup">Registarse</a>
          <a href="/auth/login">Acceder</a>
-         {{/if}}
-
+         <br>
+         <a href="/colection/list">Colecciones</a>
+{{/if}}
       </nav>
       <div class="d-flex flex-column align-items-center">
       {{{body}}}
