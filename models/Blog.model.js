@@ -5,7 +5,10 @@ const mongoose = require("mongoose")
 const blogSchema = new mongoose.Schema ({
   title: String,
   description: String,
-  img: String
+  img: String,
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+  }
 })
 
 const Blog = mongoose.model("Blog", blogSchema)

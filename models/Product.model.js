@@ -8,6 +8,10 @@ const productSchema = new mongoose.Schema ({
   size:String,
   img: String,
   color:String,
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
+  }  
   
 })
 

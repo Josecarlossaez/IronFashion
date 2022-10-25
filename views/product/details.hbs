@@ -11,5 +11,20 @@
     <div>
         <img src="{{productDetails.img}}" alt="imagen">
     </div>
+    <div>
+        {{#each commentDetails}}
+        <p>Comentario de {{owner.username}}: {{description}}</p>
+        {{/each}}
+    </div>
+    <div>
+        <form action="/product/{{productDetails._id}}/details/add-comment" method="post">
+        <label for="title">Escribe el titulo</label>
+        <input type="text" name="title">
+        <br>
+        <label for="description">Deja aquí tu comentario:</label>
+        <textarea name="description" id="" cols="30" rows="10"></textarea>
+        <button>Añadir comentario</button>
+        </form>
+    </div>
  
 </div>

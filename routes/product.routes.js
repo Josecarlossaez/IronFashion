@@ -3,6 +3,8 @@ const router = express.Router();
 const Product = require("../models/Product.model.js")
 const uploader = require("../middlewares/cloudinary.js");
 const { isAdmin, isLoggedIn } = require('../middlewares/auth.middlewares.js');
+const Comentarios = require("../models/Comentarios.model.js")
+const User = require("../models/User.model.js")
 
 //GET  ("/product/create") ruta para visualizar la página para crear un producto
 router.get("/create", isAdmin,(req, res, next) => {
@@ -40,22 +42,57 @@ router.get("/list", isLoggedIn, (req, res, next) => {
 })
 
 // GET ("/product/:productId/details")
-router.get("/:productId/details", isLoggedIn, (req, res, next) => {
+router.get("/:productId/details", isLoggedIn, async (req, res, next) => {
   const {productId} = req.params;
+  const userId = req.session.activeUser._id
+  
+  try {
+    const productDetails = await Product.findById(productId)  //.populate("owner")
+    console.log("Detalles del producto:", productDetails)
 
-   Product.findById(productId)
-   .then((response) => {
-    console.log(response)
-     res.render("product/details.hbs", {
-      productDetails:response
+    const commentDetails = await Comentarios.find({product: productId}).populate("owner", "username") 
+    console.log("Detalles de commentDetails:", commentDetails)   
+    
+    res.render ("product/details.hbs", {
+      productDetails,
+      commentDetails   
     })
-
-   }).catch((err)=>{
-    next(err)
-   })
+    
+  } catch (error) {
+    next(error)
+  }
    
 
 });
+
+//POST ("/product/:productId/details")
+router.post("/:productId/details/add-comment", isLoggedIn, async (req, res, next) => {
+  const{productId} = req.params
+  const userId = req.session.activeUser._id
+  const {title, description, owner, product} = req.body
+  console.log(req.body.title)
+  console.log(req.body.description)
+  console.log(productId)
+  console.log(userId)
+  
+  try {
+    
+    const editComentarios = {
+      title,
+      description,
+      owner: userId,
+      product: productId
+    }
+    console.log(editComentarios)
+    const addComentario = await Comentarios.create(editComentarios)
+ 
+    res.redirect(`/product/${productId}/details`)
+    
+  } catch (error) {
+    next(error)
+  }
+
+})
 
 //GET ("/product/:productId/edit-form")
 router.get("/:productId/edit-form", isAdmin, (req,res,next) => {
@@ -70,6 +107,7 @@ res.render("product/edit-form.hbs",{
   next(err)
 })
 });
+
 
 //POST ("/product/:productId/edit-form")
 router.post("/:productId/edit-form",  isAdmin, (req,res,next) => {
