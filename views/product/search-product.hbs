@@ -1,0 +1,22 @@
+<div>
+
+  <h3>Busca un producto</h3>
+
+  <form>
+
+    <input name="product" type="text">
+    <button>Buscar</button>
+
+  </form>
+
+  <div>
+    <p>resultados de busqueda:</p>
+    {{#each details}}
+    <h4>Producto: {{productType}}</h4>
+    <img src="{{img}}" alt="producto">
+  </div>
+  <br>
+<a href="/product/{{_id}}/details">Detalles del producto</a>
+<br>
+{{/each}}
+</div>

@@ -134,4 +134,36 @@ router.post("/:productId/delete",  isAdmin, (req, res, next) => {
   })
 })
 
+//GET ("/product/search-product")
+router.get("/search-product", (req, res, next) => {
+  //res.render("product/search-product.hbs")
+
+  console.log(req.query) // informacion que viene de campo de busqueda
+
+
+
+  const { product } = req.query
+  console.log(product)
+
+  if (product === undefined) {
+    res.render("product/search-product.hbs")
+  } else {
+    Product.find({productType: product})
+    .then((response) => {
+      console.log(response)
+      res.render("product/search-product.hbs", {
+        details: response
+      })
+    })
+    .catch((err) => {
+      next(err)
+    })
+  }
+
+
+})
+
+
+// POST ()
+
 module.exports = router;
