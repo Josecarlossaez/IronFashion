@@ -3,23 +3,23 @@
   <h3>Busca un producto</h3>
 
   <form >
-<p>NOMBRE DEL PRODUCTO</p>
-    <input name="product" type="text">
-    <br>
-    <p>COLOR</p>
-    <input name="color" type="text">
-    <button>Buscar</button>
-<br>
+      <p>NOMBRE DEL PRODUCTO</p>
+      <input name="productType" type="text">
+      <br>
+      <p>COLOR</p>
+      <input name="color" type="text">
+      <button>Buscar</button>
+      <br>
   </form>
 
   <div>
     <p>resultados de busqueda:</p>
-    {{#each details}}
-    <h4>Producto: {{productType}}</h4>
-    <img src="{{img}}" alt="producto">
+      {{#each details}}
+       <h4>Producto: {{productType}}</h4>
+       <img src="{{img}}" alt="producto">
   </div>
   <br>
-<a href="/product/{{_id}}/details">Detalles del producto</a>
-<br>
-{{/each}}
+      <a href="/product/{{_id}}/details">Detalles del producto</a>
+
+      {{/each}}
 </div>
