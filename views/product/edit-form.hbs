@@ -1,6 +1,6 @@
 <div>
     <h3>Editar producto</h3>
-      <form action="/product/{{productDetails._id}}/edit-form" method="POST">
+      <form action="/product/{{productDetails._id}}/edit-form" method="POST" enctype="multipart/form-data" >
 <label for="type">Nombre del producto: </label>
 <input type="text" name="type" value="{{productDetails.productType}}">
 <br>
@@ -19,7 +19,11 @@
 <label for="cost">Precio: </label><span>euros</span>
 <input type="number" name="cost" value="{{productDetails.cost}}" >
 <br>
-
+  <div>
+      <label for="img">Imagen del producto</label>
+      <input type="file" name="img" />
+    </div>
+    <br>
 <button>Editar producto</button>
 
     </form>

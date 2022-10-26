@@ -110,10 +110,10 @@ res.render("product/edit-form.hbs",{
 
 
 //POST ("/product/:productId/edit-form")
-router.post("/:productId/edit-form",  isAdmin, (req,res,next) => {
+router.post("/:productId/edit-form", uploader.single("img"), isAdmin, (req,res,next) => {
   const{productId} = req.params
-  const{productType,cost,description,temporada,size,img,color} = req.body
-  const editProduct ={productType,cost,description,temporada,size,img,color}
+  const{productType,cost,description,temporada,size,color} = req.body
+  const editProduct ={productType,cost,description,temporada,size,img: req.file.path,color}
   Product.findByIdAndUpdate(productId , editProduct)
   .then(() => {
     res.redirect("/product/list")

@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const Blog = require("../models/Blog.model.js")
+const uploader = require("../middlewares/cloudinary.js");
 const {isLoggedIn, isAdmin} = require("../middlewares/auth.middlewares.js")
+
 // GET ("/blolg/list") visualizar Blogs
 router.get("/list", isLoggedIn,(req, res, next) => {
     Blog.find()
@@ -21,17 +23,20 @@ router.get("/create",  isAdmin, (req,res,next) => {
 })
 
 // POST ("/blog/create")
-router.post("/create", isAdmin, (req, res, nex) => {
-    const {title, description,img} = req.body
-    const blogToAdd ={title, description,img}
-    Blog.create(blogToAdd)
-    .then((blog) => {
-res.redirect("/blog/list")
-    })
-    .catch((err) => {
-        next(err)
-    })
-})
+
+router.post("/create",uploader.single("img"),  isAdmin, async(req, res, next) => {
+    const{title, description} = req.body
+
+   try{
+    
+     const blogToAdd ={title, description,img: req.file.path}
+     await Blog.create(blogToAdd);
+     res.redirect("/blog/list")
+ 
+   }catch (err){
+     next(err)
+   }
+ })
 
 // GET ("/blog/:blogId/edit-form")
 router.get("/:blogId/edit-form",isAdmin, (req,res,next) => {
@@ -48,12 +53,12 @@ res.render("blog/edit-form.hbs", {
 })
 
 //POST ("/blog/:blogId/edit-form")
-router.post("/:blogId/edit-form", isAdmin, (req,res,next) =>{
+router.post("/:blogId/edit-form", uploader.single("img"), isAdmin, (req,res,next) =>{
     const {blogId} = req.params
-    const {title, description,img} = req.body
-    const blogUpdate={title,description,img}
+    const {title, description} = req.body
+    const blogUpdate={title,description,img: req.file.path}
     Blog.findByIdAndUpdate(blogId,blogUpdate)
-    .then((update) => {
+    .then(() => {
 res.redirect("/blog/list")
     })
     .catch((err) => {
