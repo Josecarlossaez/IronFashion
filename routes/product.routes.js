@@ -134,36 +134,97 @@ router.post("/:productId/delete",  isAdmin, (req, res, next) => {
   })
 })
 
+// GET ("/product/search-product")
+// router.get("/search-product", (req, res, next) => {
+//   res.render("product/search-product.hbs")
+
+//   console.log(req.query) // informacion que viene de campo de busqueda
+
+
+
+//   const { product, color} = req.query
+//   console.log(product)
+
+//   if (product === undefined) { 
+//     res.render("product/search-product.hbs") //{ $cond: { if: <boolean-expression>, then: <true-case>, else: <false-case> } }
+//   } else {
+//    // Product.find({$and:[{productType: product} ,{color: color}]}) //{$and:[{productType: product} ,{color: color}]}
+//    console.log("qué nos trae color:",color);
+//   Product.find({$or:[{$and:[{productType: product} ,{color:false}]} ,{$and:[{productType: product} ,{color: color}]}]})
+//     .then((response) => {
+//       console.log(response)
+//       res.render("product/search-product.hbs", {
+//         details: response
+//       })
+//     })
+//     .catch((err) => {
+//       next(err)
+//     })
+//   }
+
+
+// })
 //GET ("/product/search-product")
-router.get("/search-product", (req, res, next) => {
-  //res.render("product/search-product.hbs")
+// router.get("/search-product", async (req, res, next) => {
+//   const { product, color} = req.query
+//   // console.log(product)
 
-  console.log(req.query) // informacion que viene de campo de busqueda
+//   try {
+//     if(product !== undefined && color !== undefined){
+//       const details = await Product.find({$and:[{productType: product} ,{color: color}]})
+//       res.render("product/search-product.hbs",{
+//         details
+//        } ) 
+//       } 
+     
+//       //   if(product && !color){
+//       //   const details = await Product.find({productType: product})
+//       //   res.render("product/search-product.hbs",{
+//       //     details
+//       //    } )}
+
+//       //  if(color && !product){
+//       //   const details = await Product.find({color:color})
+//       //   res.render("product/search-product.hbs",{
+//       //     details
+//       //    } )
+//       //  }
+      
+        
+       
+//     } catch (error) {
+//     next(error)
+//   }
+   
+// })
+ 
+
+  // try {
+  //   if (product === undefined && color === undefined){
+  //     res.render("product/search-product.hbs")
+  //   } else {
+  //     const details = await Product.find({$and:[{productType: product} ,{color: color}]})
+  //     res.render("product/search-product.hbs", {
+  //       details
+  //     })
+  //   }
+  //   if(product !== undefined && color=== undefined){
+  //     const details = await Product.find({productType : product})
+  //     res.render("product/search-product.hbs", {
+  //       details
+  //   })
+  // }else{
+  //   const details = await Product.find({color : color})
+  //   res.render("product/search-product.hbs", {
+  //     details
+  // })
+  // }
+
+  // } catch (error) {
+  //   next(error)
+  // }
 
 
 
-  const { product } = req.query
-  console.log(product)
-
-  if (product === undefined) {
-    res.render("product/search-product.hbs")
-  } else {
-    Product.find({productType: product})
-    .then((response) => {
-      console.log(response)
-      res.render("product/search-product.hbs", {
-        details: response
-      })
-    })
-    .catch((err) => {
-      next(err)
-    })
-  }
-
-
-})
-
-
-// POST ()
 
 module.exports = router;
