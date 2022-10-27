@@ -144,8 +144,8 @@ router.post("/:productId/delete", isAdmin, (req, res, next) => {
 
 //GET ("/product/search-product")
 router.get("/search-product", async (req, res, next) => {
-  const { productType, color } = req.query;
-  if (productType === "" && color === "") {
+  const { productType, color, size } = req.query;
+  if (productType === "" && color === "" && size === "") {
     res.render("product/search-product.hbs");
     return;
   }
@@ -155,6 +155,9 @@ router.get("/search-product", async (req, res, next) => {
   }
   if (color !== "") {
     searchQuery.color = color;
+  }
+  if (size !== ""){
+    searchQuery.size = size;
   }
   console.log(searchQuery);
   try {
@@ -200,11 +203,20 @@ router.post("/:productId/add-favoritos",  async (req, res, next) => {
 
 })
 
-// //POST ("/:productId/delete-favoritos")
-// router.post("/:productId/delete-favoritos", async (req, res, next) => {
-//   const {productId} = req.params
-//   const userId = req.session.activeUser._id
-// })
+//POST ("/:productId/delete-favoritos")
+router.post("/:productId/delete-favoritos", async (req, res, next) => {
+  const {productId} = req.params
+  const userId = req.session.activeUser._id
+
+  try {    
+
+    await User.findByIdAndUpdate(userId, {$pull:{favoritos: productId}})  
+    res.redirect("/product/favoritos")
+   
+  } catch (error) {
+    next(error)
+  }  
+})
 
 
 

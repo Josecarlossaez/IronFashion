@@ -5,7 +5,10 @@
   {{#each productoFavoritos.favoritos}}
   <h3>Producto: {{productType}}</h3>
   <br>
-  <p>aqui va la imagen:</p>
+  
   <img src="{{img}}" alt="imagen-del-producto">
+   <form action="/product/{{_id}}/delete-favoritos" method="post">
+        <button>Borrar favorito</button>
+      </form>
   {{/each}}
 </div>
