@@ -57,6 +57,10 @@ footer{
   color:white;
   min-height: 100%;
 }
+button{
+  margin: 8px;
+}
+/* seccion de producto details */
 .container-product-details{
   display:grid;
   grid-template:
@@ -69,7 +73,7 @@ footer{
 .product-details{
   grid-area:produc-details;
 }
-
+/* seccion de lista de producto*/
 
 .container-product-list{ 
   margin-top: 10px; 
@@ -83,4 +87,20 @@ footer{
 }
 .product-list{
   grid-area:produc-list;
+}
+
+/* seccion lista de coleccion */
+
+.container-colection-list{
+  margin-top: 10px;
+  display: grid;
+  grid-template:
+  "image-colection-list colection-list"/
+  auto
+}
+.image-colection-list{
+  grid-area: image-colection-list;
+}
+.colection-list{
+  grid-area: colection-list;
 }

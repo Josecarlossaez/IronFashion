@@ -1,5 +1,5 @@
-<div>
-  {{#each colectionList}}
+<section class="d-flex flex-wrap flex-row justify-content-evenly">
+  {{!-- {{#each colectionList}}
 
     <a href="/colection/{{_id}}/details"><h3>{{title}}</h3></a>
     <p>{{description}}</p>
@@ -16,6 +16,31 @@
       <button>Borrar Colección</button>
     </form>
     {{/if}}
+  {{/each}} --}}
+
+  {{#each colectionList}}
+  <div class="card container-colection-list" style="width: 25rem;">
+
+    <div class="image-colection-list">
+      <img src="{{img}}" class="card-img-top" alt="producto">
+    </div>
+    <div class="colection-list">
+      <div class="card-body">
+         <a href="/colection/{{_id}}/details"><h5 class="card-title">Title:{{title}}</h5></a>
+        <p>{{description}}</p>
+      </div>
+      {{#if ../isAdminActive}}
+    <div class="card-body">
+      <a href="/colection/{{_id}}/edit-form">
+        <button class="btn btn-outline-primary">Editar Colección</button>
+      </a>
+      <form action="/colection/{{_id}}/delete" method="POST">
+        <button class="btn btn-outline-primary">Borrar Colección</button>
+      </form>
+    </div>
+    {{/if}}
+   </div>
+  </div>
   {{/each}}
 
-</div>
+</section>

@@ -1,31 +1,8 @@
-
   <h3>Lista de los Productos</h3>
-  
+<section class="d-flex flex-wrap flex-row justify-content-evenly">
 
-  {{!-- {{#each listProduct}}
-    <h3>
-      <a href="/product/{{_id}}/details">{{productType}}</a>
-    </h3>  
-      <p>Precio: {{cost}}€</p>
-      <form action="/product/{{_id}}/add-favoritos" method="post">
-        <button>Añadir a favoritos</button>
-      </form>
-      {{#if ../isAdminActive}}
-        <a href="/product/{{_id}}/edit-form">
-      
-           <button>Editar Producto</button>
-        </a>
-        <br>
-        <form action="/product/{{_id}}/delete" method="POST">
-            <button>Borrar Producto</button>
-        </form>
-       {{/if}}
-  {{/each}}
-
-</div> --}}
-
-{{#each listProduct}}
-<div class="card container-product-list" style="width: 25rem;">
+  {{#each listProduct}}
+  <div class="card container-product-list" style="width: 25rem;">
 
    <div class="image-product-list">
     <img src="{{img}}" class="card-img-top" alt="producto">
@@ -52,5 +29,6 @@
       
         {{/if}}
     </div>
-</div>
-     {{/each}}
+  </div>
+  {{/each}}
+</section>

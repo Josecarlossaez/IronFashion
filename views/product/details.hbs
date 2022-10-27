@@ -1,32 +1,5 @@
 
-    {{!-- <h3>Detalles del producto</h3>
- <div class="card" style="width: 18rem;">
-    <h4>Tipo: {{productDetails.productType}}</h4>
-    <p>Descripción: {{productDetails.description}}</p>
-    <p>Temporada: {{productDetails.temporada}}</p>
-    
-    <p>Color: {{productDetails.color}}</p>
-    <p>Color: {{productDetails.color}}</p>
-    <p>Precio: {{productDetails.cost}}€</p>
-    <div>
-        <img src="{{productDetails.img}}" alt="imagen">
-    </div>
-    <div>
-        {{#each commentDetails}}
-        <p>Comentario de {{owner.username}}: {{description}}</p>
-        {{/each}}
-    </div>
-    <div>
-      <form action="/product/{{productDetails._id}}/details/add-comment" method="post">
-        <label for="title">Escribe el titulo</label>
-        <input type="text" name="title">
-        <br>
-        <label for="description">Deja aquí tu comentario:</label>
-        <textarea name="description" id="" cols="30" rows="10"></textarea>
-        <button>Añadir comentario</button>
-      </form>
-    </div>
- </div> --}}
+<section class="d-flex flex-column align-items-center">
 
 <div class="card container-product-details" style="width: 45rem;">
 <div class="image-product-details">
@@ -61,3 +34,4 @@
     </div>
   </div>
 </div>
+</section>

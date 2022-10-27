@@ -6,11 +6,11 @@
 
   <div>
     <h3>Detalles del producto</h3>
-      {{#each allProducts}}
+      {{#each colectionDetails.productos}}
     
     <a href="/product/{{_id}}/details"><h4>Tipo: {{productType}}</h4></a>  
     <div>
-        <h3>Aquí la imagen</h3>
+        <img src="{{img}}" alt="prodcto">
     </div>
     {{/each}}
  

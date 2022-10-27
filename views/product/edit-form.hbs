@@ -1,8 +1,8 @@
 <div>
     <h3>Editar producto</h3>
       <form action="/product/{{productDetails._id}}/edit-form" method="POST" enctype="multipart/form-data" >
-<label for="type">Nombre del producto: </label>
-<input type="text" name="type" value="{{productDetails.productType}}">
+<label for="productType">Nombre del producto: </label>
+<input type="text" name="productType" value="{{productDetails.productType}}">
 <br>
 <label for="description">Descripción: </label>
 <input type="text" name="description" value="{{productDetails.description}}">
