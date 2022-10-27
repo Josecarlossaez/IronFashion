@@ -50,3 +50,19 @@ footer{
   grid-area: footer2;
   color: white;
 }
+#div-search{
+  color:white;
+  min-height: 100%;
+}
+.container-product-details{
+  display:grid;
+  grid-template:
+  "image-product-details produc-details"/
+  auto
+}
+.image-product-details{
+  grid-area:image-product-details;
+}
+.product-details{
+  grid-area:produc-details;
+}

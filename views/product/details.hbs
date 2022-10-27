@@ -1,12 +1,12 @@
-<div>
-    <h3>Detalles del producto</h3>
- 
+
+    {{!-- <h3>Detalles del producto</h3>
+ <div class="card" style="width: 18rem;">
     <h4>Tipo: {{productDetails.productType}}</h4>
     <p>Descripción: {{productDetails.description}}</p>
     <p>Temporada: {{productDetails.temporada}}</p>
     
     <p>Color: {{productDetails.color}}</p>
-    <p>Talla: {{productDetails.size}}</p>
+    <p>Color: {{productDetails.color}}</p>
     <p>Precio: {{productDetails.cost}}€</p>
     <div>
         <img src="{{productDetails.img}}" alt="imagen">
@@ -17,14 +17,47 @@
         {{/each}}
     </div>
     <div>
-        <form action="/product/{{productDetails._id}}/details/add-comment" method="post">
+      <form action="/product/{{productDetails._id}}/details/add-comment" method="post">
         <label for="title">Escribe el titulo</label>
         <input type="text" name="title">
         <br>
         <label for="description">Deja aquí tu comentario:</label>
         <textarea name="description" id="" cols="30" rows="10"></textarea>
         <button>Añadir comentario</button>
-        </form>
+      </form>
     </div>
- 
+ </div> --}}
+
+<div class="card container-product-details" style="width: 45rem;">
+<div class="image-product-details">
+  <img src="{{productDetails.img}}" class="card-img-top" alt="producto">
+</div>
+<div class="product-details">
+  <div class="card-body">
+    <h5 class="card-title">Tipo:{{productDetails.productType}}</h5>
+    <p class="card-text">Descripción: {{productDetails.description}}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Temporada: {{productDetails.temporada}}</li>
+    <li class="list-group-item">Color: {{productDetails.color}}</li>
+    <li class="list-group-item">Color: {{productDetails.color}}</li>
+    <li class="list-group-item">Precio: {{productDetails.cost}}€</li>
+  </ul>
+   <div class="card-body">
+    {{#each commentDetails}}
+    <h5 class="card-title">Comentario de {{owner.username}}</h5>
+    <p class="card-text">Descripción: {{description}}</p>
+     {{/each}}
+  </div>
+    <div >
+      <form action="/product/{{productDetails._id}}/details/add-comment" method="post">
+    
+        <div class="mb-3">
+         <label for="description" class="form-label">Añade tu comentario</label>
+         <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+         <button  class="btn btn-outline-primary">Añadir comentario</button>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
