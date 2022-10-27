@@ -1,6 +1,18 @@
+html {
+  height: 100%;
+}
 body {
+  min-height: 100%;
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: url(/images/8K7A5194.jpg) no-repeat center center fixed;
+  background-size: cover;
+  display: grid;
+  grid-template:
+  "nav" 70px
+  "div-body" auto
+  "footer" 60px
+
 }
 
 a {
@@ -8,5 +20,33 @@ a {
 }
 
 h1 {
-  color: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 150px;
+  color:white
+}
+
+nav{
+  grid-area: nav;  
+}
+.nav-link{
+  color: white;
+  font-size: 20px;
+}
+.div-body{
+  grid-area: div-body;
+}
+footer{
+  grid-area: footer;
+  display: grid;
+  grid-template:
+  "footer1 footer2" / 
+  80%
+}
+.footer1{
+  grid-area: footer1;
+}
+.footer2{
+  grid-area: footer2;
+  color: white;
 }

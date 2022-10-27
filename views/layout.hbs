@@ -23,41 +23,12 @@
 
    <body>
 
-      {{!-- <nav>
-         <a href="/">Home</a>
-         {{#if isUserActive}}
-         <a href="/profile">Perfil</a>
-         <a href="/auth/logout">Cerrar Sesion</a>
-         <br>
-         <a href="/product/list">Productos</a>
-         <a href="/blog/list"> Blogs</a>
-         <a href="/colection/list">Colecciones</a>
-         <a href="/product/search-product">Buscar producto</a>
-         <a href="/product/favoritos">Productos favoritos</a>
-         <br>
-         {{#if isAdminActive}}
-           <a href="/product/create">Crear Producto</a>
-           <a href="/colection/create">Crear Colección</a>
-           <a href="/blog/create">Crear Blog</a>
-           {{/if}}
-        
-           
-         
-         {{else}}
-
-         <a href="/auth/signup">Registarse</a>
-         <a href="/auth/login">Acceder</a>
-         <br>
-         <a href="/colection/list">Colecciones</a>
-{{/if}}
-      </nav> --}}
-
-
-      <ul class="nav nav-tabs">
+      <nav>
+      <ul class="nav">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/">Home</a> 
         </li>
-              {{#if isUserActive}}   
+            {{#if isUserActive}}   
           <li class="nav-item">
              <a class="nav-link active" aria-current="page" href="/profile">Perfil</a> 
           </li>
@@ -71,35 +42,37 @@
          <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/blog/list">Blogs</a> 
          </li>
-             {{#if isAdminActive}}
-      <li class="nav-item dropdown">
+              {{#if isAdminActive}}
+         <li class="nav-item dropdown">
            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Herramientas</a>
-       <ul class="dropdown-menu">
-         <li>
-            <a class="dropdown-item" href="/product/create">Crear Producto</a>
+            <ul class="dropdown-menu">
+              <li>
+                 <a class="dropdown-item" href="/product/create">Crear Producto</a>
+              </li>
+               <li>
+                 <a class="dropdown-item" href="/colection/create">Crear Colección</a>
+              </li>
+              <li>
+                 <a class="dropdown-item" href="/blog/create">Crear Blog</a>
+              </li>
+            </ul> 
          </li>
-          <li>
-            <a class="dropdown-item" href="/colection/create">Crear Colección</a>
-         </li>
-         <li>
-            <a class="dropdown-item" href="/blog/create">Crear Blog</a>
-         </li>
-       </ul> 
-      </li>
            
-           {{/if}}
-    
+              {{/if}}
+            {{/if}}
 
-           {{/if}}
+      </ul>
+      </nav> 
 
-      </ul> 
 
-
-      <div class="d-flex flex-column align-items-center">
+      <div class="d-flex flex-column align-items-center div-body">
       {{{body}}}
       </div>
+
+
     <footer>
-      <ul class="nav justify-content-center">
+      <div class="footer1">
+      <ul class="nav justify-content-start">
          <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/auth/signup">Registrarse</a> 
          </li>
@@ -110,7 +83,20 @@
             <a class="nav-link active" aria-current="page" href="/auth/logout">Cerrar Sesión</a> 
          </li>
       </ul>
+      </div>
+
+      <div class="footer2">
+       <ul> Contacto
+         <li>Telefono: 699699699</li>
+         <li>Email: benitoCamela@gmail.com</li>         
+         <li>Direccion: utrera </li>
+       </ul>
+
+    </div>
     </footer>
+
+
+
       <script src="/js/script.js"></script>
    </body>
 
