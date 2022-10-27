@@ -23,7 +23,7 @@
 
    <body>
 
-      <nav>
+      {{!-- <nav>
          <a href="/">Home</a>
          {{#if isUserActive}}
          <a href="/profile">Perfil</a>
@@ -50,28 +50,67 @@
          <br>
          <a href="/colection/list">Colecciones</a>
 {{/if}}
-      </nav>
+      </nav> --}}
 
 
-      {{!-- <ul class="nav nav-pills">
+      <ul class="nav nav-tabs">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/">Home</a> 
         </li>
-              {{!-- {{#if isUserActive}}    --}}
-         {{!-- <li class="nav-item">
+              {{#if isUserActive}}   
+          <li class="nav-item">
              <a class="nav-link active" aria-current="page" href="/profile">Perfil</a> 
+          </li>
+          
+         <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/product/list">Productos</a> 
+         </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/colection/list">Colecciones</a> 
          </li>
          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/auth/logout">Cerrar Sesión</a> 
+            <a class="nav-link active" aria-current="page" href="/blog/list">Blogs</a> 
          </li>
+             {{#if isAdminActive}}
+      <li class="nav-item dropdown">
+           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Herramientas</a>
+       <ul class="dropdown-menu">
+         <li>
+            <a class="dropdown-item" href="/product/create">Crear Producto</a>
+         </li>
+          <li>
+            <a class="dropdown-item" href="/colection/create">Crear Colección</a>
+         </li>
+         <li>
+            <a class="dropdown-item" href="/blog/create">Crear Blog</a>
+         </li>
+       </ul> 
+      </li>
+           
+           {{/if}}
+    
 
-      </ul> --}} 
+           {{/if}}
+
+      </ul> 
 
 
       <div class="d-flex flex-column align-items-center">
       {{{body}}}
       </div>
-    
+    <footer>
+      <ul class="nav justify-content-center">
+         <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/auth/signup">Registrarse</a> 
+         </li>
+            <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/auth/login">Acceder</a> 
+         </li>
+         <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/auth/logout">Cerrar Sesión</a> 
+         </li>
+      </ul>
+    </footer>
       <script src="/js/script.js"></script>
    </body>
 
