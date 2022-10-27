@@ -71,8 +71,8 @@ footer{
 }
 
 
-.container-product-list{
-  
+.container-product-list{ 
+  margin-top: 10px; 
   display:grid;
   grid-template:
   "image-product-list produc-list"/

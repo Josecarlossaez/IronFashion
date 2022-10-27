@@ -25,7 +25,7 @@
 </div> --}}
 
 {{#each listProduct}}
-<div class="card container-product-list" style="width: 30rem;">
+<div class="card container-product-list" style="width: 25rem;">
 
    <div class="image-product-list">
     <img src="{{img}}" class="card-img-top" alt="producto">
@@ -33,26 +33,24 @@
    <div class="product-list">
       <div class="card-body">
         <a href="/product/{{_id}}/details"><h5 class="card-title">Tipo:{{productType}}</h5></a>
-    </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Precio: {{cost}}€</li>
-    <li class="list-group-item">Temporada: {{productDetails.temporada}}</li>
-    <li class="list-group-item"> 
-      <form action="/product/{{_id}}/add-favoritos" method="post">
-        <button class="btn btn-outline-primary">Añadir a favoritos</button>
-      </form></li>
+     </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Precio: {{cost}}€</li>
+      </ul>
+      <div class="card-body">
+        <form action="/product/{{_id}}/add-favoritos" method="post">
+          <button class="btn btn-outline-primary">Añadir a favoritos</button>
+        </form>
       {{#if ../isAdminActive}}
-    <li class="list-group-item">
-      <a href="/product/{{_id}}/edit-form">
+        <a href="/product/{{_id}}/edit-form">      
+          <button class="btn btn-outline-primary">Editar Producto</button>
+        </a>
+        <form action="/product/{{_id}}/delete" method="POST">
+          <button class="btn btn-outline-primary" >Borrar Producto</button>
+        </form>
+      </div>      
       
-           <button class="btn btn-outline-primary">Editar Producto</button>
-        </a></li>
-
-        <li class="list-group-item">
-             <form action="/product/{{_id}}/delete" method="POST">
-                 <button class="btn btn-outline-primary" >Borrar Producto</button>
-             </form>
-        </li>
-</div>
         {{/if}}
+    </div>
+</div>
      {{/each}}
