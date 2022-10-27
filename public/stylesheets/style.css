@@ -104,3 +104,24 @@ button{
 .colection-list{
   grid-area: colection-list;
 }
+
+.container-colection-details{
+  background-color: transparent;
+  border:none;
+  margin-top: 10px;
+  display: grid;
+  grid-template:
+   "colection-details"
+  "image-colection-details"
+}
+.image-colection-details{
+  
+  grid-area: image-colection-details;
+}
+.colection-details{
+  margin-top: 10px;
+  grid-area: colection-details;
+}
+.div-details{
+  margin-top: 10px;
+}

@@ -1,11 +1,6 @@
-<div>
-  <h3>Detalles de la colección</h3>
 
-  <p>Coleccion: {{colectionDetails.title}}</p>
-
-
-  <div>
-    <h3>Detalles del producto</h3>
+      
+    {{!-- <h3>Detalles del producto</h3>
       {{#each colectionDetails.productos}}
     
     <a href="/product/{{_id}}/details"><h4>Tipo: {{productType}}</h4></a>  
@@ -14,5 +9,31 @@
     </div>
     {{/each}}
  
+     </div>
+</div> --}}
+<section class="d-flex flex-column align-items-center">
+  <div>
+ 
+
+    <h3>Coleccion: {{colectionDetails.title}}</h3>
+  </div>
+
+<div>
+      {{#each colectionDetails.productos}}
+ <div class="card container-colection-details" style="width: 40rem;">
+    <div class="colection-details">
+       <div class="card-body ">
+         <h5 class="card-title"><a href="/product/{{_id}}/details">Producto:{{productType}}</a></h5>
+       </div>
+    </div>
+    <div class="image-colection-details">
+      <img src="{{img}}" class="card-img-top" alt="producto">
+    <div>
+ </div>
+    {{/each}}
 </div>
-</div>
+
+
+
+
+ </section>
