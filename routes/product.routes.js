@@ -12,11 +12,7 @@ router.get("/create", isAdmin, (req, res, next) => {
 });
 
 // POST ("/product/create") ruta para crear un producto
-router.post(
-  "/create",
-  uploader.single("img"),
-  isAdmin,
-  async (req, res, next) => {
+router.post("/create", uploader.single("img"), isAdmin, async (req, res, next) => {
     const { productType, cost, description, temporada, size, color } = req.body;
 
     try {
@@ -53,15 +49,13 @@ router.get("/list", isLoggedIn, (req, res, next) => {
 // GET ("/product/:productId/details")
 router.get("/:productId/details", isLoggedIn, async (req, res, next) => {
   const { productId } = req.params;
-  const userId = req.session.activeUser._id;
-
+ 
   try {
-    const productDetails = await Product.findById(productId); //.populate("owner")
+    const productDetails = await Product.findById(productId); 
     console.log("Detalles del producto:", productDetails);
 
-    const commentDetails = await Comentarios.find({
-      product: productId,
-    }).populate("owner", "username");
+    
+    const commentDetails = await Comentarios.find({product: productId,}).populate("owner", "username"); //Primer argumento:Para sacar la informacion del owner y el Segundo argumento es para sacar solo el username del owner y evitar pasar todos los parámetros que contiene owner
     console.log("Detalles de commentDetails:", commentDetails);
 
     res.render("product/details.hbs", {
@@ -74,10 +68,7 @@ router.get("/:productId/details", isLoggedIn, async (req, res, next) => {
 });
 
 //POST ("/product/:productId/details")
-router.post(
-  "/:productId/details/add-comment",
-  isLoggedIn,
-  async (req, res, next) => {
+router.post("/:productId/details/add-comment", isLoggedIn, async (req, res, next) => {
     const { productId } = req.params;
     const userId = req.session.activeUser._id;
     const { title, description, owner, product } = req.body;
@@ -94,7 +85,7 @@ router.post(
         product: productId,
       };
       console.log(editComentarios);
-      const addComentario = await Comentarios.create(editComentarios);
+     await Comentarios.create(editComentarios);
 
       res.redirect(`/product/${productId}/details`);
     } catch (error) {
@@ -118,11 +109,7 @@ router.get("/:productId/edit-form", isAdmin, (req, res, next) => {
 });
 
 //POST ("/product/:productId/edit-form")
-router.post(
-  "/:productId/edit-form",
-  uploader.single("img"),
-  isAdmin,
-  (req, res, next) => {
+router.post("/:productId/edit-form", uploader.single("img"), isAdmin, (req, res, next) => {
     const { productId } = req.params;
     const { productType, cost, description, temporada, size, color } = req.body;
     const editProduct = {
@@ -179,6 +166,47 @@ router.get("/search-product", async (req, res, next) => {
     next(error);
   }
 });
+
+// GET ("/product/favoritos")
+router.get("/favoritos", async (req, res, next) => {
+  const userId = req.session.activeUser._id
+
+
+  try {
+    const productoFavoritos = await User.findById(userId).populate("favoritos", "productType img")
+    console.log(productoFavoritos)
+    res.render("product/favoritos.hbs", {
+      productoFavoritos
+    })
+  } catch (error) {
+    
+  }
+})
+
+
+// POST ("/product/favoritos")
+router.post("/:productId/add-favoritos",  async (req, res, next) => {
+  const {productId} = req.params
+  const userId = req.session.activeUser._id
+
+  try {    
+
+    await User.findByIdAndUpdate(userId, {$addToSet:{favoritos: productId}})  
+    res.redirect("/product/list")
+   
+  } catch (error) {
+    next(error)
+  }  
+
+})
+
+// //POST ("/:productId/delete-favoritos")
+// router.post("/:productId/delete-favoritos", async (req, res, next) => {
+//   const {productId} = req.params
+//   const userId = req.session.activeUser._id
+// })
+
+
 
 
 

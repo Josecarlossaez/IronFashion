@@ -5,9 +5,11 @@
   {{#each listProduct}}
     <h3>
       <a href="/product/{{_id}}/details">{{productType}}</a>
-    </h3>
-  
+    </h3>  
       <p>Precio: {{cost}}€</p>
+      <form action="/product/{{_id}}/add-favoritos" method="post">
+        <button>Añadir a favoritos</button>
+      </form>
       {{#if ../isAdminActive}}
         <a href="/product/{{_id}}/edit-form">
       

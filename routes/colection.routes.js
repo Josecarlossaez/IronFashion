@@ -24,7 +24,7 @@ router.post("/create",uploader.single("img") ,(req,res,next) =>{
     const{title, description, productos} = req.body
     const colectiontoAdd ={title,description,img: req.file.path , productos}
     Collection.create(colectiontoAdd)
-    .then((colection) => {
+    .then(() => {
         res.redirect("/colection/list")
     }).catch((err) => {
         next(err)

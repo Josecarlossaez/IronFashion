@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require("../models/User.model")
+const Product = require("../models/Product.model.js")
 
 const {isLoggedIn, isAdmin} = require("../middlewares/auth.middlewares.js")
 
@@ -23,6 +24,7 @@ router.get("/", isLoggedIn, (req, res, next) => {
 router.get("/admin-profile", isAdmin, (req, res, next) => {
   res.render("profile/admin-profile.hbs")
 })
+
 
 
 
