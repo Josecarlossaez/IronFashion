@@ -25,6 +25,9 @@ h1 {
   font-size: 150px;
   color:white
 }
+h3{
+  color:white
+}
 
 nav{
   grid-area: nav;  
@@ -65,4 +68,19 @@ footer{
 }
 .product-details{
   grid-area:produc-details;
+}
+
+
+.container-product-list{
+  
+  display:grid;
+  grid-template:
+  "image-product-list produc-list"/
+  auto
+}
+.image-product-list{
+  grid-area:image-product-list;
+}
+.product-list{
+  grid-area:produc-list;
 }
