@@ -122,6 +122,15 @@ button{
 .blog-list{
   grid-area: blog-list;
 }
+/* seccion lista de favoritos */
+.container-favoritos-list{
+  color:white;
+  min-height: 100%;
+ 
+  background-color: transparent;
+  border:none;
+
+}
 
 
 /* seccion detalles de coleccion */
