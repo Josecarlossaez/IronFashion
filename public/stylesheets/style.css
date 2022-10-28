@@ -214,7 +214,15 @@ button{
   background-color: transparent;
   border:none; 
 }
+/* seccion de editar colection */
 .container-container-edit{
+  color:white;
+  min-height: 100%; 
+  background-color: transparent;
+  border:none; 
+}
+/* seccion de editar blog */
+.container-blog-edit{
   color:white;
   min-height: 100%; 
   background-color: transparent;
