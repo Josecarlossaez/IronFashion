@@ -1,34 +1,3 @@
-{{!-- <div>
-    <h3>Editar producto</h3>
-      <form action="/product/{{productDetails._id}}/edit-form" method="POST" enctype="multipart/form-data" >
-<label for="productType">Nombre del producto: </label>
-<input type="text" name="productType" value="{{productDetails.productType}}">
-<br>
-<label for="description">Descripción: </label>
-<input type="text" name="description" value="{{productDetails.description}}">
-<br>
-<label for="temporada">Temporada: </label>
-<input type="text" name="temporada" value="{{productDetails.temporada}}">
-<br>
-<label for="color">Color: </label>
-<input type="text" name="color" value="{{productDetails.color}}">
-<br>
-<label for="size">Talla: </label>
-<input type="text" name="size" value="{{productDetails.size}}">
-<br>
-<label for="cost">Precio: </label><span>euros</span>
-<input type="number" name="cost" value="{{productDetails.cost}}" >
-<br>
-  <div>
-      <label for="img">Imagen del producto</label>
-      <input type="file" name="img" />
-    </div>
-    <br>
-<button>Editar producto</button>
-
-    </form>
-</div> --}}
-
 <section class="d-flex flex-column align-items-center">
   <h3>Editar producto</h3>
       <form action="/product/{{productDetails._id}}/edit-form" method="POST" enctype="multipart/form-data" >

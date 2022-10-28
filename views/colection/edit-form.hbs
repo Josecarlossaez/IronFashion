@@ -1,50 +1,31 @@
-<div>
-    <h3>Editar Colección</h3>
-      <form action="/colection/{{colectionDetails._id}}/edit-form" method="POST">
+<section class="d-flex flex-column align-items-center">
+  <h3>Editar Colección</h3>
+      <form action="/colection/{{colectionDetails._id}}/edit-form" method="POST" enctype="multipart/form-data" >
+       <div class="card container-colection-edit" style="width: 40rem;">
+         <div class="mb-3">
+           <label for="title">Titulo de la Colección:</label>
+           <input type="text" name="title" class="form-control" id="formGroupExampleInput" value="{{colectionDetails.title}}">
+         </div>
+         <div class="mb-3">
+           <label for="description">Descripción:</label>
+           <input type="text" name="description" class="form-control" id="formGroupExampleInput" value="{{colectionDetails.description}}">
+         </div>
+         <div class="mb-3">
+            <label for="img">Imagen del producto</label>
+            <input type="file" name="img" class="form-control" id="formGroupExampleInput" />
+         </div>
+         <div class="mb-3">
+          <label for="products" class="form-label">Elija productos</label>
+           <select name="productos" class="form-select" multiple="true">
 
+             {{#each allProducts}}
+               <option value="{{this._id}}">{{this.productType}}</option>
+             {{/each}}
+           </select>          
+         </div>
+         <div class="mb-3">
+           <button type="submit" class="btn btn-primary btn-lg">Editar Colección</button>
+         </div>
 
-    <label for="title">Titulo de la Colección:</label>
-    <input type="text" name="title" value="{{colectionDetails.title}}">
-    <br>
-    <label for="description">Descripción:</label>
-    <input type="text" name="description" value="{{colectionDetails.description}}">
-    <br>
-    <label for="productos">Autor:</label>
-    <br>
-      {{#each colectionDetails.productos}}
-    <p>Productos: {{productType}}</p>
-    {{/each}}
-
-    {{!-- <select name="productos" multiple="true">
-    
-        <option value="{{colectionDetails.productos}}">Elija un producto</option>
-
-        {{#each colectionDetails.productos}}
-            <option value="{{this._id}}">{{this.name}}</option>
-        {{/each}}
-
-    </select> --}}
-
-    <select name="productos" multiple="true">
-    
-        <option value="{{allProducts.productType}}">Elija un producto</option>
-
-        {{#each allProducts}}
-            <option value="{{this._id}}">{{this.productType}}</option>
-        {{/each}}
-
-    </select>
-    
-    
-    {{!-- <ol>
- {{#each productList}}
- <li>{{this.name}}</li>
-   {{/each}}
-    </ol> --}}
-
-    <br>
-    <button type="submit">Editar Colección</button>
-    {{!-- cuando el boton está dentro de un form, se comporta siempre como submit de forma predeterminada --}}
-
-  </form>
-</div>
+       </div>
+      </form>
