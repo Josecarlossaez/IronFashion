@@ -101,11 +101,8 @@ router.get("/:colectionId/details",isLoggedIn, async (req, res, next) => {
 
     try {
         const colectionDetails = await Collection.findById(colectionId).populate("productos")
-        // const allProducts = await Product.find()
-        //console.log(allProducts)
         res.render("colection/details.hbs", {
-        colectionDetails
-    //    allProducts 
+        colectionDetails 
     })
         
     } catch (error) {
