@@ -1,34 +1,32 @@
-<div>
-    <h3>Añade una colección</h3>
-      <form action="/colection/create" method="POST" enctype="multipart/form-data">
 
 
-    <label for="title">Titulo de la Colección:</label>
-    <input type="text" name="title">
-    <br>
-    <label for="description">Descripción:</label>
-    <input type="text" name="description">
-    <br>
-   
- <label for="productos"></label>Elija productos: </label>
- <br>
-    <select name="productos" multiple="true">
-    
-        
+<section class="d-flex flex-column align-items-center">
+<div class="card container-colection-create" style="width: 40rem;">
+<div class="mb-3">
+  <label for="title" class="form-label">Título de la Colección</label>
+  <input type="text" name="title" class="form-control" id="formGroupExampleInput" >
+</div>
+<div class="mb-3">
+  <label for="description" class="form-label">Descripción</label>
+  <input type="text" name="description" class="form-control" id="formGroupExampleInput" >
+</div>
+<div class="mb-3">
+  <label for="products" class="form-label">Elija productos</label>
+    <select name="productos" class="form-select" multiple="true">
 
         {{#each productList}}
             <option value="{{this._id}}">{{this.productType}}</option>
         {{/each}}
-
     </select>
-   <div>
-      <label for="img">Imagen del producto</label>
-      <input type="file" name="img" />
-    </div>
-
-    <br>
-    <button type="submit">Añadir Colección</button>
-    {{!-- cuando el boton está dentro de un form, se comporta siempre como submit de forma predeterminada --}}
-
-  </form>
 </div>
+<div class="mb-3">
+  <label for="img" class="form-label">Imagen del producto</label>
+  <input type="file" name="img" />
+</div>  
+<button   class="btn btn-primary btn-lg">Crear Colección</button>
+</div>
+</section>
+
+
+
+

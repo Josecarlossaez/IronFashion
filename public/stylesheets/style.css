@@ -1,6 +1,7 @@
 html {
   height: 100%;
 }
+
 body {
   min-height: 100%;
   padding: 50px;
@@ -14,9 +15,12 @@ body {
   "footer" 60px
 
 }
+a:link, a:visited, a:active {
+  text-decoration:none;
+}
 
 a {
-  color: #00b7ff;
+  color:white;
 }
 
 h1 {
@@ -105,6 +109,7 @@ button{
   grid-area: colection-list;
 }
 
+/* seccion detalles de coleccion */
 .container-colection-details{
   background-color: transparent;
   border:none;
@@ -124,4 +129,22 @@ button{
 }
 .div-details{
   margin-top: 10px;
+}
+/* seccion crear  coleccion */
+.container-colection-create{
+  color:white;
+  min-height: 100%;
+ 
+  background-color: transparent;
+  border:none;
+  
+}
+/* seccion crear  producto */
+.container-product-create{
+  color:white;
+  min-height: 100%;
+ 
+  background-color: transparent;
+  border:none;
+  
 }

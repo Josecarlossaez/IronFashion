@@ -1,45 +1,47 @@
-<div>
-  <h3>Crear un producto</h3>
-  <form action="/product/create" method="POST" enctype="multipart/form-data">
-    {{!-- <label for="owner">Creado por: </label>
-    <input type="text" name="owner">
-    <br> --}}
-    <label for="productType">Nombre del producto: </label>
-    <input type="text" name="productType" />
-    <br />
-    <label for="description">Descripción: </label>
-    <input type="text" name="description" />
-    <br />
-    <label for="temporada">Temporada: </label>
-    <input type="text" name="temporada" />
-    <br />
-    <label for="cost">Precio: </label><span>€</span>
-    <input type="number" name="cost" />
-    <br />
-    <label for="color">Color: </label>
-    <input type="text" name="color" />
-    <br />
-    <label for="size">Talla: </label>
-    <select name="size" multiple="true">
-  
 
+
+<section class="d-flex flex-column align-items-center">
+<form action="/product/create" method="POST" enctype="multipart/form-data">
+<div class="card container-product-create" style="width: 40rem;">
+<div class="mb-3">
+  <label for="productType" class="form-label">Nombre del producto</label>
+  <input type="text" name="productType" class="form-control" id="formGroupExampleInput" >
+</div>
+<div class="mb-3">
+  <label for="description" class="form-label">Descripción</label>
+  <input type="text" name="description" class="form-control" id="formGroupExampleInput" >
+</div>
+<div class="mb-3">
+  <label for="temporada" class="form-label">Temporada</label>
+  <input type="text" name="temporada" class="form-control" id="formGroupExampleInput" >
+</div>
+<div class="mb-3">
+  <label for="cost" class="form-label">Precio</label>
+  <input type="number" name="cost" class="form-control" id="formGroupExampleInput" >
+</div>
+<div class="mb-3">
+  <label for="color" class="form-label">Color</label>
+  <input type="text" name="color" class="form-control" id="formGroupExampleInput" >
+</div>
+
+<div class="mb-3">
+  <label for="size" class="form-label">Talla</label>
+    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
       <option value="XS">XS</option>
       <option value="S">S</option>
       <option value="M">M</option>
       <option value="L">L</option>
       <option value="XL">XL</option>
       <option value="XXL">XXL</option>
-
-    </select>
-
-    <br />
-
-    <div>
-      <label for="img">Imagen del producto</label>
-      <input type="file" name="img" />
-    </div>
-    <br />
-    <button class="btn btn-primary">Añadir producto</button>
-
-  </form>
+</select>
 </div>
+<div class="mb-3">
+  <label for="img" class="form-label">Imagen del producto</label>
+  <input type="file" name="img" />
+</div>  
+<button   class="btn btn-primary btn-lg">Crear Producto</button>
+</div>
+ </form>
+</section>
+
+
