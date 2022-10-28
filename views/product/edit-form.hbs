@@ -1,4 +1,4 @@
-<div>
+{{!-- <div>
     <h3>Editar producto</h3>
       <form action="/product/{{productDetails._id}}/edit-form" method="POST" enctype="multipart/form-data" >
 <label for="productType">Nombre del producto: </label>
@@ -27,4 +27,45 @@
 <button>Editar producto</button>
 
     </form>
-</div>
+</div> --}}
+
+<section class="d-flex flex-column align-items-center">
+  <h3>Editar producto</h3>
+      <form action="/product/{{productDetails._id}}/edit-form" method="POST" enctype="multipart/form-data" >
+       <div class="card container-product-edit" style="width: 40rem;">
+         <div class="mb-3">
+            <label for="productType">Nombre del producto: </label>
+            <input type="text" name="productType" class="form-control" id="formGroupExampleInput" value="{{productDetails.productType}}"> 
+         </div>
+         <div class="mb-3">
+            <label for="description">Descripción: </label>
+            <input type="text" name="description" class="form-control" id="formGroupExampleInput" value="{{productDetails.description}}">
+         </div>
+         <div class="mb-3">
+            <label for="temporada">Temporada: </label>
+            <input type="text" name="temporada" class="form-control" id="formGroupExampleInput" value="{{productDetails.temporada}}">
+         </div>
+         <div class="mb-3">
+            <label for="color">Color: </label>
+            <input type="text" name="color" class="form-control" id="formGroupExampleInput" value="{{productDetails.color}}">
+         </div>
+         <div class="mb-3">
+            <label for="size">Talla: </label>
+            <input type="text" name="size" class="form-control" id="formGroupExampleInput" value="{{productDetails.size}}">
+         </div>
+         <div class="mb-3">
+            <label for="cost">Precio: </label><span>euros</span>
+            <input type="number" name="cost" class="form-control" id="formGroupExampleInput" value="{{productDetails.cost}}" >          
+         </div>
+         <div class="mb-3">
+            <label for="img">Imagen del producto</label>
+            <input type="file" name="img" class="form-control" id="formGroupExampleInput" />
+         </div>
+         <div class="mb-3">
+          <button class="btn btn-primary btn-lg">Editar producto</button>
+         </div>
+
+       </div>
+
+      </form>
+</section>

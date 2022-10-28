@@ -206,3 +206,11 @@ button{
   font-size: 40px;
   color: rgb(231, 224, 26);
 } 
+/* seccion de editar producto */
+
+.container-product-edit{
+  color:white;
+  min-height: 100%; 
+  background-color: transparent;
+  border:none; 
+}
