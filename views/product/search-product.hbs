@@ -1,33 +1,3 @@
-{{!-- <div id="div-search">
-
-  <h3>Busca un producto</h3>
-
-  <form >
-      <p>NOMBRE DEL PRODUCTO</p>
-      <input name="productType" type="text">
-      <br>
-      <p>COLOR</p>
-      <input name="color" type="text">
-      <p>Talla</p>
-      <input name="size" type="text">
-      <button>Buscar</button>
-      <br>
-      
-  </form>
-
-  <div>
-    <p>resultados de busqueda:</p>
-      {{#each details}}
-       <h4>Producto: {{productType}}</h4>
-       <img src="{{img}}" alt="producto">
-  </div>
-  <br>
-  <div>
-      <a href="/product/{{_id}}/details">Detalles del producto</a>
-  </div>
-      {{/each}}
-</div> --}}
-
 <section class="d-flex flex-column align-items-center">
   <h3>Busca un producto</h3>
 <div class="container-busqueda">
@@ -64,7 +34,7 @@
     <img src="{{img}}" class="card-img-top" alt="producto"> 
    </div>
    <div class="mb-3">
-    <a href="/product/{{_id}}/details"><buttonm class="btn btn-outline-danger">Detalles del producto</button></a>
+    <a href="/product/{{_id}}/details"><buttonm class="btn btn-danger">Detalles del producto</button></a>
    </div>
    {{/each}}
    </div>

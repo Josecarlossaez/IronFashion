@@ -20,7 +20,7 @@ a:link, a:visited, a:active {
 }
 
 a {
-  color:gray;
+  color:#efb810;
 }
 
 h1 {
@@ -111,6 +111,7 @@ button{
 /* seccion lista de blog */
 .container-blog-list{
   margin-top: 10px;
+  color: #efb810;
   display: grid;
   grid-template:
   "image-blog-list blog-list"/
@@ -193,6 +194,9 @@ button{
   grid-area: busqueda;
 }
 .resultado-busqueda{
+  background-color: transparent;
+  color: #efb810;
+  border: none;
   grid-area: resultado-busqueda;
 }
 .busqueda p {

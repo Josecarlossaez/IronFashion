@@ -1,7 +1,79 @@
+TÍTULO : IRON FASHION
 
-1 - PREARAR ESQUEMA DE LA PÁGINAA
-2- CREAR ARBOL CON TODAS LAS CARPETAS Y ARCHIVOS
+URL:  https://iron-fashion.cyclic.app/
+
+Descripción: 
+Esta página web está diseñada para un emprendedor o emprendedora que quiere mostrar sus creaciones. Este artesano
+será el administrador del sitio, y podrá crear, actualizar, visualizar y borrar todos sus productos y colecciones. Cualquier usuario que acceda de nuevo, solamente
+podrá ver las colecciones, pero si se registra, verá los detalles de cada producto, de cada colección y los blogs, que contendrán las publicaciones más representativas del creador.
+También el nuevo usuario podrá generar sus propio registro de favoritos. 
+Hasta nueva implementación, la comunicación entre usuario y administrador se realizará de manera tradicional, telefónicamente o mediante e-mail.
+
+PROGRAMACIÓN:
+
+1 - PREARAR ESQUEMA DE LA PÁGINA MEDIANTE LA PÁGINA WEB MIRÓ
+2- CREAR ARBOL CON TODAS LAS CARPETAS Y ARCHIVOS. REQUERIMIENTO DE PAQUETES NPM
 3- CREACIÓN DE MODELOS
+    - Definir las relaciones entre modelos
 4- RUTAS DE AUTHENTICACIÓN
-5 - RUTAS CRUD
+5- RUTAS CRUD
+6- FUNCIONALIDADES EXTRAS
+    - Búsqueda de producto
+    - Registro de favoritos
+    - Creación de comentarios
+7- DISEÑO RESPONSIVO DEL SITIO WEB
+PRINCIPALES FUNCIONALIDADES
 
+- Rol Admin
+  * Create:
+     - Product
+        Ruta GET,  renderización de la vista
+        Ruta POST, para la creación del producto
+           - Redireccionamiento a lista de productos
+     - Colección
+        Ruta GET, renderización de la vista
+        Ruta POST, creación de la colección
+        .populate(productos)
+           - Redireccionamiento a lista de colecciones
+     - Blog
+        Ruta GET, renderización de la vista
+        Ruta POST, creación del Blog
+           - Redireccionamiento a lista de blogs
+     - Comentarios
+        Ruta POST, creación del Blog
+        .populate (comentarios)
+           - Redireccionamiento a la página actual con el comentario añadido
+     - Favoritos
+         Ruta GET,  renderización de la vista
+         Ruta POST, creación del producto favorito
+           - Redireccionamiento a la página actual (lista de productos)
+  * Edit/Update:
+     - Product
+        Ruta GET,  renderización de la vista con los detalles del producto
+        Ruta POST, edición de los detalles, por ejemplo subir precio.
+         NOTA: en todas las ediciones hay que editar la imagen, si no da error
+          - Redireccionamiento a la lista de productos
+     - Colection
+        Ruta GET,  renderización de la vista con los detalles de la colección
+        Ruta POST, edición de los detalles, por ejemplo modificar los productos
+         NOTA: en todas las ediciones hay que editar la imagen, si no da error
+          - Redireccionamiento a la lista de blogs
+     - Blog
+        Ruta GET,  renderización de la vista con los detalles del blog
+        Ruta POST, edición de los detalles, por ejemplo añadir nueva descripción e imagen
+         NOTA: en todas las ediciones hay que editar la imagen, si no da error
+  * Delete:
+     Ruta POST insertada en un botón para borrar los siguientes elementos
+     - Product
+     - Colection
+     - Blog
+   
+  * Read:
+     - Todas las páginas      
+
+- Rol User
+  * Create:
+     - Comentarios
+     - Favoritos
+  * Read:
+     - Todas las páginas 
