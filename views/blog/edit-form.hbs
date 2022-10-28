@@ -1,19 +1,23 @@
-<div>
+<section class="d-flex flex-column align-items-center">
   <h3>Crear un Blog </h3>
-  <form action="/blog/{{blogDetails._id}}/edit-form" method="POST" enctype="multipart/form-data" >
-    <label for="title">Título del Blog: </label>
-    <input type="text" name="title" value="{{blogDetails.title}}" />
-    <br />
-    <div>
-      <label for="img">Imagen del blog</label>
-      <input type="file" name="img" />
-    </div>
-    <br />
-    <label for="description">Descripción: </label>
-    <input type="text" name="description" value="{{blogDetails.description}}" />
-    <br />
-    <button>Editar Blog</button>
+  <form action="/blog/{{blogDetails._id}}/edit-form" method="POST" enctype="multipart/form-data">
+      <div class="card container-blog-edit" style="width: 40rem;">
+         <div class="mb-3">
+            <label for="title">Título del Blog: </label>
+            <input type="text" name="title" class="form-control" id="formGroupExampleInput" value="{{blogDetails.title}}"/>
+         </div>
+         <div class="mb-3">
+            <label for="img">Imagen del blog</label>
+            <input type="file" name="img" class="form-control" id="formGroupExampleInput"/>          
+         </div>
+         <div class="mb-3">
+          <label for="description">Descripción: </label>
+          <input type="text" name="description" class="form-control" id="formGroupExampleInput" value="{{blogDetails.description}}"/>          
+         </div>
+         <div class="mb-3">
+            <button class="btn btn-primary btn-lg">Editar Blog</button>
+         </div>
 
-  </form>
-  
-</div>
+      </div>
+
+</section>

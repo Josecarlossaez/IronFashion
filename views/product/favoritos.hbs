@@ -1,19 +1,4 @@
-{{!-- <div>
-  <h3>Favoritos</h3>
-  <p>...</p>
-
-  {{#each productoFavoritos.favoritos}}
-  <h3>Producto: {{productType}}</h3>
-  <br>
-  
-  <img src="{{img}}" alt="imagen-del-producto">
-   <form action="/product/{{_id}}/delete-favoritos" method="post">
-        <button>Borrar favorito</button>
-      </form>
-  {{/each}}
-</div> --}}
-
-<section class="d-flex flex-column align-items-center">
+<section class="d-flex flex-wrap flex-row justify-content-around">
   {{#each productoFavoritos.favoritos}}
   <div class="card container-favoritos-list" style="width: 20rem;">
       <div class="favoritos-details">
@@ -22,15 +7,15 @@
         </div>
         <div class="image-favoritos">
             <img src="{{img}}" class="card-img-top" alt="producto">
-        <div>
+        </div>
         <div>
          <form action="/product/{{_id}}/delete-favoritos" method="POST">
-          <button class="btn btn-primary btn-lg" >Quitar de Favoritos</button>
+          <button class="btn btn-primary btn-sm" >Quitar de Favoritos</button>
         </form>
         </div>
-     </div>
 
-  <div>
+        </div>
+  </div>
 {{/each}}
 
 

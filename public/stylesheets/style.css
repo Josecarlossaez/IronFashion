@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap');
 html {
   height: 100%;
 }
@@ -20,7 +21,7 @@ a:link, a:visited, a:active {
 }
 
 a {
-  color:gray;
+  color:#efb810;
 }
 
 h1 {
@@ -111,6 +112,7 @@ button{
 /* seccion lista de blog */
 .container-blog-list{
   margin-top: 10px;
+  color: #efb810;
   display: grid;
   grid-template:
   "image-blog-list blog-list"/
@@ -120,12 +122,11 @@ button{
   grid-area: image-blog-list;
 }
 .blog-list{
+  width: 300px;
   grid-area: blog-list;
 }
 /* seccion lista de favoritos */
 .container-favoritos-list{
-  color:white;
-  min-height: 100%;
  
   background-color: transparent;
   border:none;
@@ -176,4 +177,62 @@ button{
   min-height: 100%; 
   background-color: transparent;
   border:none;  
+}
+/* seccion de busqueda */
+
+.container-busqueda{  
+  display: grid;
+  gap: 50px;
+  grid-template: 
+  "busqueda resultado-busqueda"/
+  auto
+}
+.busqueda{
+  background-color: transparent;
+  color: white;
+  border: none;
+  margin-right: 50px;
+  max-height: 300px;
+  grid-area: busqueda;
+}
+.resultado-busqueda{
+  background-color: transparent;
+  color: #efb810;
+  border: none;
+  grid-area: resultado-busqueda;
+}
+.busqueda p {
+  font-size: 30px;
+}
+ .resultado-busqueda h4 {
+  font-size: 40px;
+  color: rgb(231, 224, 26);
+} 
+/* seccion de editar producto */
+
+.container-product-edit{
+  color:white;
+  min-height: 100%; 
+  background-color: transparent;
+  border:none; 
+}
+/* seccion de editar colection */
+.container-container-edit{
+  color:white;
+  min-height: 100%; 
+  background-color: transparent;
+  border:none; 
+}
+/* seccion de editar blog */
+.container-blog-edit{
+  color:white;
+  min-height: 100%; 
+  background-color: transparent;
+  border:none; 
+}
+#bienvenido-admin{
+  font-size: 100px;
+  font-family: 'Dancing Script', cursive;
+  color: #efb810;
+
 }

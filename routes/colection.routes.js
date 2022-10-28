@@ -71,10 +71,10 @@ router.get("/:colectionId/edit-form", isAdmin, async (req, res, next) => {
 });
 
 //POST ("/colection/:colectionId/edit-form")
-router.post("/:colectionId/edit-form",isAdmin, (req, res, next) => {
+router.post("/:colectionId/edit-form", uploader.single("img"), isAdmin, (req, res, next) => {
     const{colectionId} = req.params
     const{title, description, productos} =req.body
-    const colectionUpdate={title, description, productos}
+    const colectionUpdate={title, description, productos, img: req.file.path}
     Collection.findByIdAndUpdate(colectionId , colectionUpdate)
     .then(() => {
 res.redirect("/colection/list")
@@ -101,11 +101,8 @@ router.get("/:colectionId/details",isLoggedIn, async (req, res, next) => {
 
     try {
         const colectionDetails = await Collection.findById(colectionId).populate("productos")
-        // const allProducts = await Product.find()
-        //console.log(allProducts)
         res.render("colection/details.hbs", {
-        colectionDetails
-    //    allProducts 
+        colectionDetails 
     })
         
     } catch (error) {

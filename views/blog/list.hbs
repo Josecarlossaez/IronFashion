@@ -1,12 +1,16 @@
 <section class="d-flex flex-column align-items-center">
     {{#each blogList}}
-  <div class="card container-blog-list" style="width: 40rem;">
+  <div class="card container-blog-list" style="width: 52.5rem;">
     <div class="image-blog-list">
       <img src="{{img}}" class="card-img-top" alt="blog">
     </div>
     <div class="blog-list">
      <div class="card-body">
-      <a href="/colection/{{_id}}/details"><h5 class="card-title">{{title}}</h5></a>
+      <h5 class="card-title">{{title}}</h5>
+     </div>
+     <div class="card-body">
+      <label for="description" class="form-label">Descripción: </label>
+      <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="22" readonly >{{description}}</textarea>
      </div>
     {{#if ../isAdminActive}}
      <div class="card-body">
