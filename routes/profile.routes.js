@@ -22,7 +22,15 @@ router.get("/", isLoggedIn, (req, res, next) => {
 })
 
 router.get("/admin-profile", isAdmin, (req, res, next) => {
-  res.render("profile/admin-profile.hbs")
+  User.findById(req.session.activeUser._id)
+  .then((response) => {
+    res.render("profile/admin-profile.hbs", {
+      userDetails: response
+    })
+  })
+  .catch((err) => {
+    next(err)
+  })
 })
 
 

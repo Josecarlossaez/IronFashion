@@ -79,15 +79,19 @@
     <footer>
       <div class="footer1">
       <ul class="nav justify-content-start">
+            {{#if isUserActive}}   
+
+         <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/auth/logout">Cerrar Sesión</a> 
+         </li>
+         {{else}}
          <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/auth/signup">Registrarse</a> 
          </li>
             <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/auth/login">Acceder</a> 
          </li>
-         <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/auth/logout">Cerrar Sesión</a> 
-         </li>
+            {{/if}}
       </ul>
       </div>
 
