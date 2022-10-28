@@ -1,18 +1,24 @@
-<div>
+<section class="d-flex flex-column align-items-center">
     {{#each blogList}}
-    <h3>{{title}}</h3>
-    <img src="{{img}}">
-   
-    <p>{{description}}</p>
-    <a href="/blog/{{_id}}/edit-form">
+  <div class="card container-blog-list" style="width: 40rem;">
+    <div class="image-blog-list">
+      <img src="{{img}}" class="card-img-top" alt="blog">
+    </div>
+    <div class="blog-list">
+     <div class="card-body">
+      <a href="/colection/{{_id}}/details"><h5 class="card-title">{{title}}</h5></a>
+     </div>
     {{#if ../isAdminActive}}
-<button>Editar Blog</button>
-    </a>
-      <br>
-<form action="/blog/{{_id}}/delete" method="POST">
-<button>Borrar Blog</button>
-</form>
+     <div class="card-body">
+        <a href="/blog/{{_id}}/edit-form"><button class="btn btn-outline-primary">Editar Blog</button></a>
+     </div>
+     <div class="card-body">
+        <form action="/blog/{{_id}}/delete" method="POST"><button class="btn btn-outline-primary">Borrar Blog</button></form>
+     </div>
+    </div>
     {{/if}}
-    
-    {{/each}}
-</div>
+
+
+ </div>
+    {{/each}}    
+</section>

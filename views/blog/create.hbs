@@ -1,19 +1,20 @@
-<div>
-  <h3>Crear un Blog </h3>
+<section class="d-flex flex-column align-items-center">
   <form action="/blog/create" method="POST" enctype="multipart/form-data">
-<label for="title">Título del Blog: </label>
-<input type="text" name="title">
-<br>
-  <div>
-      <label for="img">Imagen del blog</label>
-      <input type="file" name="img" />
-    </div>
-<br>
-<label for="description">Descripción: </label>
-<input type="text" name="description">
-<br>
-  
-<button>Añadir Blog</button>
+   <div class="card container-blog-create" style="width: 40rem;">
+    <div class="mb-3">
+      <label for="title" class="form-label">Título del Blog:</label>
+      <input type="text" name="title" class="form-control" id="formGroupExampleInput"> 
+   </div>
+   <div class="mb-3">
+     <label for="img" class="form-label">Imagen del blog</label>
+     <input type="file" name="img" class="form-control" id="formGroupExampleInput">
+   </div>
+   <div class="mb-3">
+     <label for="description" class="form-label">Descripción: </label>
+     <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea> 
+   </div>
+   <button class="btn btn-primary btn-lg">Añadir Blog</button>
+   </div>
+   </form>
 
-    </form>
-</div>
+</section>

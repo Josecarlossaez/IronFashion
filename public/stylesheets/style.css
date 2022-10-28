@@ -20,7 +20,7 @@ a:link, a:visited, a:active {
 }
 
 a {
-  color:white;
+  color:gray;
 }
 
 h1 {
@@ -108,6 +108,21 @@ button{
 .colection-list{
   grid-area: colection-list;
 }
+/* seccion lista de blog */
+.container-blog-list{
+  margin-top: 10px;
+  display: grid;
+  grid-template:
+  "image-blog-list blog-list"/
+  auto
+}
+.image-blog-list{
+  grid-area: image-blog-list;
+}
+.blog-list{
+  grid-area: blog-list;
+}
+
 
 /* seccion detalles de coleccion */
 .container-colection-details{
@@ -142,9 +157,14 @@ button{
 /* seccion crear  producto */
 .container-product-create{
   color:white;
-  min-height: 100%;
- 
+  min-height: 100%; 
   background-color: transparent;
-  border:none;
-  
+  border:none;  
+}
+/* seccion crear blog */
+.container-blog-create{
+  color:white;
+  min-height: 100%; 
+  background-color: transparent;
+  border:none;  
 }
