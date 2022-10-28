@@ -16,9 +16,9 @@
     <li class="list-group-item">Precio: {{productDetails.cost}}€</li>
   </ul>
    <div class="card-body">
+    <h5 class="card-title">Comentarios</h5>
     {{#each commentDetails}}
-    <h5 class="card-title">Comentario de {{owner.username}}</h5>
-    <p class="card-text">Descripción: {{description}}</p>
+    <p class="card-text">{{owner.username}}: {{description}}</p>
      {{/each}}
   </div>
     <div >

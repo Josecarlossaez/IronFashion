@@ -1,9 +1,11 @@
 <section class="d-flex flex-column align-items-center">
-  <h3>Busca un producto</h3>
 <div class="container-busqueda">
   
   <div class=" card busqueda" style="width: 30rem">
   <form>
+   <div class="mb-3">
+     <h3>Busca un producto</h3>
+   </div>
    <div class="mb-3">
       <p>NOMBRE DEL PRODUCTO</p>
       <input name="productType" type="text" class="form-control" id="formGroupExampleInput">
@@ -13,8 +15,16 @@
       <input name="color" type="text" class="form-control" id="formGroupExampleInput">
    </div>
    <div class="mb-3">
-    <p>Talla</p>
-      <input name="size" type="text" class="form-control" id="formGroupExampleInput">
+     <label for="size" class="form-label">Talla</label>
+      <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+       <option value="">Selecciona Talla</option>
+       <option value="XS">XS</option>
+       <option value="S">S</option>
+       <option value="M">M</option>
+       <option value="L">L</option>
+       <option value="XL">XL</option>
+       <option value="XXL">XXL</option>
+     </select>
    </div>
    <div class="mb-3" class="form-control" id="formGroupExampleInput">
       <button class="btn btn-primary btn-sm">Buscar</button>
@@ -23,9 +33,9 @@
   </div>
 
   <div class=" card resultado-busqueda" style="width: 30rem">
-   <div class="mb-3">
+   {{!-- <div class="mb-3">
     <h3>Resultados de busqueda:</h3>
-   </div>
+   </div> --}}
    {{#each details}}
    <div class="mb-3">
      <h4>{{productType}}</h4>
